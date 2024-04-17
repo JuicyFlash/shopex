@@ -99,6 +99,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rspec-support (v3.13.1, asdf: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v2.3.2, asdf: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v4.19.0, asdf: 3.3.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="shoulda-matchers (v6.2.0, asdf: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="slim (v5.2.1, asdf: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="slim-rails (v3.6.3, asdf: 3.3.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v4.2.1, asdf: 3.3.0) [gem]" level="application" />
