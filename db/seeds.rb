@@ -29,25 +29,19 @@ end
 def load_products
   @brand = Brand.find_by(title: "Tissot")
   @brand.products.new(title: "TISSOT LE LOCLE POWERMATIC 80",
-                      description: "Швейцарский автоматический механизм Powermatic 80.111",
-                      raiting: 3).save
+                      description: "Швейцарский автоматический механизм Powermatic 80.111").save
   @brand.products.new(title: "TISSOT V8 Quartz Cronograph",
-                      description: "МужскиеК варцевые Нержав",
-                      raiting: 2).save
+                      description: "МужскиеК варцевые Нержав").save
   @brand.products.new(title: "TISSOT T048.417.27.057.03 (T0484172705703)",
-                      description: "Мужские наручные швейцарские часы",
-                      raiting: 2).save
+                      description: "Мужские наручные швейцарские часы").save
   @brand = Brand.find_by(title: "Garmin")
   @brand.products.new(title: "Garmin Instinct 2",
-                      description: "Часы",
-                      raiting: 0).save
+                      description: "Часы").save
   @brand.products.new(title: "Garmin Vivoactive 5",
-                      description: "Garmin Vivoative 5 Slate Aluminum Bezel with Black Case and Silicone Band Безель из сланцевого алюминия с черным корпусом",
-                      raiting: 3).save
+                      description: "Garmin Vivoative 5 Slate Aluminum Bezel with Black Case and Silicone Band Безель из сланцевого алюминия с черным корпусом").save
   @brand = Brand.find_by(title: "Patek Philippe")
   @brand.products.new(title: "Patek Philippe Calatrava Vintage",
-                      description: "Швейцарские часы Patek Philippe Calatrava Vintage",
-                      raiting: 3).save
+                      description: "Швейцарские часы Patek Philippe Calatrava Vintage").save
 end
 
 load_data
