@@ -2,8 +2,9 @@
 
 class CartsController < ApplicationController
 
-  before_action :find_cart, only: %i[put_product]
+  before_action :find_cart, only: %i[put_product show]
 
+  def show; end
   def put_product
     if @cart.product_exist_in_cart?(cart_product_params[:product_id])
       cart_product = @cart.cart_products.find_by(product_id: cart_product_params[:product_id])

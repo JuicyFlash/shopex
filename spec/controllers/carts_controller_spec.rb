@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe CartsController, type: :controller do
   describe 'authenticated user' do
-    let(:user) { create(:user) }
+    let!(:user) { create(:user) }
     let!(:product) { create(:product) }
-    let(:cart) { create(:cart, user: user) }
+    let!(:cart) { create(:cart, user: user) }
 
     before do
       login(user)
     end
-    describe 'put product' do
+    describe '#put_product' do
       it 'create new cart_product in user`s cart' do
         expect(CartProduct.count).to eq 0
         patch :put_product, params: { product: { product_id: product.id, quantity: 1 } }, format: :turbo_stream
@@ -29,6 +29,16 @@ RSpec.describe CartsController, type: :controller do
 
         expect(CartProduct.count).to eq 1
         expect(CartProduct.first.quantity).to eq 4
+      end
+    end
+    describe '#show' do
+      let!(:cart_product) { create_list(:cart_product, 5, cart: cart, product: product) }
+      it 'find actual cart with products' do
+        get :show
+        crt = assigns(:cart)
+
+        expect(crt).to eq cart
+        expect(crt.cart_products).to match_array(cart.cart_products)
       end
     end
   end
@@ -43,7 +53,7 @@ RSpec.describe CartsController, type: :controller do
         .to receive(:new)
           .and_return(cart_service)
     end
-    describe 'put product' do
+    describe '#put_product' do
       it 'create new cart_product in user`s cart' do
         expect(CartProduct.count).to eq 0
         patch :put_product, params: { product: { product_id: product.id, quantity: 1 } }, format: :turbo_stream
@@ -63,6 +73,16 @@ RSpec.describe CartsController, type: :controller do
 
         expect(CartProduct.count).to eq 1
         expect(CartProduct.first.quantity).to eq 4
+      end
+    end
+    describe '#show' do
+      let!(:cart_product) { create_list(:cart_product, 5, cart: cart, product: product) }
+      it 'find actual cart with products' do
+        get :show
+        crt = assigns(:cart)
+
+        expect(crt).to eq cart
+        expect(crt.cart_products).to match_array(cart.cart_products)
       end
     end
   end

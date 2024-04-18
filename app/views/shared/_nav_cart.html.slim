@@ -1,3 +1,3 @@
 - unless @cart.nil?
   .nav-cart
-    = nav_cart_name(@cart)
+    = link_to nav_cart_name(@cart), cart_show_path

@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :products, only: %i[index show]
 
   patch 'cart/put_product' => 'carts#put_product'
+  get 'cart/show' => 'carts#show'
 end

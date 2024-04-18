@@ -1,0 +1,4 @@
+- if @cart.present?
+  - if @cart.cart_products.present?
+    - @cart.cart_products.find_each do |cart_product|
+      = render 'products/cart_product', cart_product: cart_product
