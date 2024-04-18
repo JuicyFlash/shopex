@@ -12,4 +12,15 @@ RSpec.describe ProductsController, type: :controller do
       expect(response).to render_template :index
     end
   end
+  describe 'GET #show' do
+    let(:product) { create(:product) }
+    before { get :show, params: { id: product.id } }
+
+    it 'populates selected product' do
+      expect(assigns(:product)).to eq(product)
+    end
+    it 'render show view' do
+      expect(response).to render_template :show
+    end
+  end
 end
