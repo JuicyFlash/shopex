@@ -10,7 +10,11 @@
     <%= javascript_importmap_tags %>
   </head>
   <%= render 'shared/nav' %>
-  <%= render 'shared/flash' %>
+
+  <div id="flash-messages">
+    <%= render 'shared/flash' %>
+  </div>
+
   <body>
     <%= yield %>
   </body>
