@@ -1,0 +1,40 @@
+.order-form
+  = form_with model: order, local: false do |order_form|
+    = order_form.fields_for :detail, order.detail do |detail_form|
+      .row
+        .col-md-6
+          = detail_form.label :Name
+          p
+          = detail_form.text_field :first_name, class: "form-control"
+          = render 'orders/detail_message', detail: order.detail, field: 'first_name'
+        .col-md-6
+          = detail_form.label :Surname
+          p
+          = detail_form.text_field :last_name, class: "form-control"
+          = render 'orders/detail_message', detail: order.detail, field: 'last_name'
+      p
+      .row
+        .col-md-6
+          = detail_form.label :City
+          p
+          = detail_form.text_field :city, class: "form-control"
+          = render 'orders/detail_message', detail: order.detail, field: 'city'
+        .col-md-6
+          = detail_form.label :Phone
+          p
+          = detail_form.text_field :phone_number, class: "form-control"
+          = render 'orders/detail_message', detail: order.detail, field: 'phone'
+      p
+      .row
+        .col-md-9
+          = detail_form.label :Street
+          p
+          = detail_form.text_field :street, class: "form-control"
+          = render 'orders/detail_message', detail: order.detail, field: 'street'
+        .col-md-3
+          = detail_form.label :House
+          p
+          = detail_form.text_field :house_number, class: "form-control"
+          = render 'orders/detail_message', detail: order.detail, field: 'street'
+
+    = order_form.submit 'Create', name: 'create', class: "btn btn-outline-dark"

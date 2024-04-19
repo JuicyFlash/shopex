@@ -4,7 +4,11 @@ class CartsController < ApplicationController
 
   before_action :find_cart, only: %i[put_product add_product sub_product remove_product show]
 
-  def show; end
+  def show
+    @order = Order.new
+    @order_detail = OrderDetail.new
+    @order.detail = @order_detail
+  end
 
   def put_product
     @quantity = cart_product_params[:quantity].to_i
