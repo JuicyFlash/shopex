@@ -1,0 +1,6 @@
+= turbo_frame_tag "cart-product-#{cart_product.id}"
+  .title = cart_product.product.title
+  .quantity = cart_product.quantity
+  = render 'carts/add_product', cart_product: cart_product
+  = render 'carts/sub_product', cart_product: cart_product
+  = render 'carts/remove_product', cart_product: cart_product
