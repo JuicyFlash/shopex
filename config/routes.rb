@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :products, only: %i[index show]
 
-  resources :orders, only: %i[create]
+  resources :orders, only: %i[create index]
 
   patch 'cart/put_product' => 'carts#put_product'
   patch 'cart/add_product' => 'carts#add_product'

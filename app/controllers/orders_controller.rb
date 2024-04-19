@@ -2,8 +2,13 @@
 
 class OrdersController < ApplicationController
 
-  before_action :find_cart, only: %i[create]
+  before_action :find_cart, only: %i[create index]
 
+  def index
+    return if current_user.nil?
+
+    @orders = current_user.orders
+  end
   def create
     @order = Order.new(order_params)
     @order.user_id = current_user.id if current_user.present?

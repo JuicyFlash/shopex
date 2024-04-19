@@ -102,4 +102,23 @@ RSpec.describe OrdersController, type: :controller do
       end
     end
   end
+
+  describe 'GET #index' do
+    let!(:user) { create(:user) }
+    let!(:order) { create(:order, user:) }
+    let!(:order_detail) { create(:order_detail, order:) }
+    let!(:order_products) { create_list(:order_product, 5, order:, quantity: 2) }
+
+    before do
+      login(user)
+    end
+    it 'return users`s order' do
+      get :index
+      actual_order = assigns(:orders).first
+
+      expect(actual_order).to eq order
+      expect(actual_order.detail).to eq order.detail
+      expect(actual_order.order_products).to match_array order.order_products
+    end
+  end
 end
