@@ -1,0 +1,6 @@
+.put-product
+  = form_with url: cart_put_product_path, model: product, method: :patch, local: false do |f|
+    = f.hidden_field :product_id, value: product.id
+    = f.label :count
+    = f.number_field :quantity, class: "form-control", value: 1, min: 1
+    = f.submit 'put', name: 'put'

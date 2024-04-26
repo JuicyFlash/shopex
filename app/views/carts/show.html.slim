@@ -1,0 +1,6 @@
+- if @cart.present?
+  - if @cart.cart_products.present?
+    - @cart.cart_products.find_each do |cart_product|
+      = render 'cart_products/cart_product', cart_product: cart_product
+    .order id="order"
+      = render 'orders/form', order: @order
