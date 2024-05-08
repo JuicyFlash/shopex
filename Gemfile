@@ -51,6 +51,11 @@ gem "slim-rails"
 
 gem "devise", github: "heartcombo/devise", ref: "f8d1ea90bc3"
 
+# Bootstrap
+gem 'sassc-rails'
+gem 'bootstrap'
+gem 'bootstrap_icons_rails'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "rspec-rails"
