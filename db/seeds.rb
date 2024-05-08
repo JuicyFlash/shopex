@@ -8,6 +8,11 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 def destroy_data
+  CartProduct.destroy_all
+  OrderProduct.destroy_all
+  OrderDetail.destroy_all
+  Cart.destroy_all
+  Order.destroy_all
   Brand.destroy_all
   Product.destroy_all
 end
@@ -29,19 +34,25 @@ end
 def load_products
   @brand = Brand.find_by(title: "Tissot")
   @brand.products.new(title: "TISSOT LE LOCLE POWERMATIC 80",
-                      description: "Швейцарский автоматический механизм Powermatic 80.111").save
+                      description: "Швейцарский автоматический механизм Powermatic 80.111" ,
+                      price: 27000.52).save
   @brand.products.new(title: "TISSOT V8 Quartz Cronograph",
-                      description: "МужскиеК варцевые Нержав").save
+                      description: "МужскиеК варцевые Нержав",
+                      price: 35568.00).save
   @brand.products.new(title: "TISSOT T048.417.27.057.03 (T0484172705703)",
-                      description: "Мужские наручные швейцарские часы").save
+                      description: "Мужские наручные швейцарские часы",
+                      price: 40000.00).save
   @brand = Brand.find_by(title: "Garmin")
   @brand.products.new(title: "Garmin Instinct 2",
-                      description: "Часы").save
+                      description: "Часы",
+                      price: 70000.00).save
   @brand.products.new(title: "Garmin Vivoactive 5",
-                      description: "Garmin Vivoative 5 Slate Aluminum Bezel with Black Case and Silicone Band Безель из сланцевого алюминия с черным корпусом").save
+                      description: "Garmin Vivoative 5 Slate Aluminum Bezel with Black Case and Silicone Band Безель из сланцевого алюминия с черным корпусом",
+                      price: 89600.00).save
   @brand = Brand.find_by(title: "Patek Philippe")
   @brand.products.new(title: "Patek Philippe Calatrava Vintage",
-                      description: "Швейцарские часы Patek Philippe Calatrava Vintage").save
+                      description: "Швейцарские часы Patek Philippe Calatrava Vintage",
+                      price: 150000.00).save
 end
 
 load_data

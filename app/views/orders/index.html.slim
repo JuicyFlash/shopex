@@ -1,8 +1,10 @@
 .orders
   - @orders.find_each  do |order|
     .order
-      = "Order #{order.created_at}"
+      = "Order #{order.created_at} total: #{order.total}"
       - order.order_products.find_each do |order_product|
         .product
           = order_product.product.title
           = order_product.quantity
+          = order_product.price
+          = order_product.total_price

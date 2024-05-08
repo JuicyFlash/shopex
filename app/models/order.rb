@@ -7,4 +7,12 @@ class Order < ApplicationRecord
   belongs_to :user, optional: true
 
   accepts_nested_attributes_for :detail
+
+  def total
+    res = 0
+    order_products.find_each do |order_product|
+      res += order_product.price * order_product.quantity
+    end
+    res
+  end
 end

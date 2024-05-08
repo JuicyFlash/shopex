@@ -6,4 +6,19 @@ RSpec.describe Order, type: :model do
   it { should belong_to(:user).optional(true) }
   it { should have_one(:detail) }
 
+  describe 'order methods' do
+    let!(:order) { create(:order) }
+    let!(:product) { create(:product, price: 200.00) }
+    let!(:order_product) { create(:order_product, order:, product:, quantity: 5) }
+    let(:order_products) { create_list(:order_product, 3, order:, product:, quantity: 3) }
+
+    it 'can calculate products total price #total' do
+      total = 0
+      order.order_products.find_each do |order_product|
+        total += order_product.total_price
+      end
+
+      expect(total).to eq order.total
+    end
+  end
 end

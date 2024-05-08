@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.user_id = current_user.id if current_user.present?
     @cart.cart_products.find_each do |cart_product|
-      @order.order_products.new(product_id: cart_product.product_id, quantity: cart_product.quantity)
+      @order.order_products.new(product_id: cart_product.product_id, quantity: cart_product.quantity, price: cart_product.price)
     end
     if @order.save
       @cart.cart_products.destroy_all
