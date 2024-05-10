@@ -1,3 +1,9 @@
 - unless @cart.nil?
-  .nav-cart
-    = link_to nav_cart_name(@cart), cart_show_path
+  = link_to cart_show_path
+    .d-flex.justify-content-center
+      = image_tag('cart-2.png', width: 25, height: 20, class: "cart-image")
+      .flex-column.nav-cart-info
+        .products-quantity
+          = nav_cart_products(@cart)
+        .products-price
+          = nav_cart_price(@cart)

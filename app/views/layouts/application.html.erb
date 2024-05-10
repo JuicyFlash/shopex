@@ -9,13 +9,30 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <%= render 'shared/nav' %>
-
-  <div id="flash-messages">
-    <%= render 'shared/flash' %>
-  </div>
 
   <body>
+
+    <%= render 'shared/top_header' %>
+
+    <div class="container text-center">
+      <div class="logo">
+        <%= link_to root_path do %>
+          <h1>ShopEX</h1>
+        <%end%>
+      </div>
+    </div>
+
+<!--    <div class="toast-container position-fixed bottom-0 end-0 p-3" id="flash-messages">-->
+
+<!--    </div>-->
+
+<!--    <div class="container text-center my-1">-->
+<!--      <div id="flash-messages">-->
+        <%#= render 'shared/flash' %>
+<!--      </div>-->
+<!--    </div>-->
+
+
     <%= yield %>
   </body>
 </html>

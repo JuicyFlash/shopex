@@ -1,8 +1,11 @@
-.put-product
-  = form_with url: cart_put_product_path, model: product, method: :patch, local: false do |f|
-    = f.hidden_field :product_id, value: product.id
-    .product-price
-      = product.price
-    = f.label :count
-    = f.number_field :quantity, class: "form-control", value: 1, min: 1
-    = f.submit 'put', name: 'put'
+= form_with url: cart_put_product_path, scope: product, method: :patch, local: false do |f|
+  input type="hidden"  name="product[product_id]" value="#{product.id}"
+  .row.justify-content-end
+    .col-md-4
+      .d-flex.flex-column
+        .p-2.bd-highlight
+          = product.price
+        .p-2.bd-highlight
+          = f.number_field :quantity, class: "form-control", value: 1, min: 1, id: "cart-product-#{product.id}-quantity"
+        .p-2.bd-highlight
+          = f.submit 'Купить', name: 'add', class: "btn btn-outline-dark order-button"

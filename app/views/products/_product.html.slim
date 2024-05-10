@@ -1,3 +1,13 @@
-.product
-  = product.title
+/ .product
+/   = product.title
+/   = render 'carts/put_product_form', product: product
+
+.product-card.col-xl-3.overflow-visible.flex-col
+  .brand.my-4.mx-2
+    = product.brand.title.capitalize
+  .title.my-4
+    h5
+      = product.title.capitalize
+  .picture
+    = image_tag('abt-2.jpg', class: "product-picture")
   = render 'carts/put_product_form', product: product

@@ -1,2 +1,11 @@
-- flash.each do |key, message|
-  = content_tag :div, message, class: "alert alert-#{ key == "alert" ? "danger" : "primary" }"
+/ - flash.each do |key, message|
+/   / = content_tag :div, message, class: "alert alert-#{ key == "alert" ? "danger" : "primary" }"
+/   = content_tag :div, message
+
+div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+  div class="toast-header"
+    strong class="me-auto"
+      = 'Bootstrap'
+    button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"
+  div class="toast-body"
+    ="Hello, world! This is a toast message"
