@@ -1,5 +1,4 @@
 .product-card{
-  font-family: 'Lora-Regular';
   border-radius: 10px;
   background: #fafafa;
   margin-bottom: 20px;
@@ -17,7 +16,14 @@
   height: auto;
 }
 
+.product-card .brand{
+  font-family: 'Lora-Regular';
+}
+.product-card .price{
+  font-size: 15px;
+}
 .product-card .title{
+  font-family: 'Lora-Regular';
   text-align: center;
   padding: 25px 0 20px 0px;
 }

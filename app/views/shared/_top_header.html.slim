@@ -8,20 +8,22 @@
           span.navbar-toggler-icon
         .collapse.navbar-collapse id="navbarContent"
           ul.navbar-nav.mr-auto.mb-2.mb-lg-0
-            li.nav-item
-              a.nav-link href="" = "About"
-            li.nav-item
-              a.nav-link href="" = "About"
-            li.nav-item
-              a.nav-link href="" = "Some"
+            li class="nav-item dropdown"
+              a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                = t('.language')
+              ul class="dropdown-menu"
+                - I18n.available_locales.each do |locale|
+                  li
+                    - unless I18n.locale == locale
+                      = link_to t(locale, scope: 'locales'), url_for(lang: locale), class: "dropdown-item"
         .d-flex
           - if user_signed_in?
-            = button_to "Выход", destroy_user_session_path, class: "button btn btn-outline-light rounded-5 mx-3", method: :delete
-            = button_to "Заказы", orders_path, class: "button btn btn-sm btn-outline-light rounded-5 mx-3 my-1", method: :get
+            = button_to t('user_sessions.logout'), destroy_user_session_path, class: "button btn btn-outline-light rounded-5 mx-3", method: :delete
+            = button_to t('.orders'), orders_path, class: "button btn btn-sm btn-outline-light rounded-5 mx-3 my-1", method: :get
           -else
             button.btn.btn-outline-light.rounded-5 data-bs-toggle="modal" data-bs-target="#signInModalForm"
-              = "Вход"
-            = button_to "Регистрация", new_user_registration_path, class: "button btn btn-sm btn-outline-light rounded-5 mx-2 my-1", method: :get
+              = t('user_sessions.login')
+            = button_to t('user_sessions.signup'), new_user_registration_path, class: "button btn btn-sm btn-outline-light rounded-5 mx-2 my-1", method: :get
 
   .row
     .col-1.offset-10.my-1
@@ -34,13 +36,13 @@
     .modal-content
       .modal-header
         .row
-          h5 = "Вход"
+          h5 = t('.modal_header')
         h5.modal-title.fs-5#signInModalFormLabel
         button.btn-close  type="button" data-bs-dismiss="modal" aria-label="close"
       .modal-body
-        = render 'users/shared/sign_in'
+        = render 'users/sign_in'
       .modal-footer
-        = link_to 'Регистрация', new_user_registration_path
+        = link_to t('user_sessions.signup'), new_user_registration_path
 
 / .container-fluid.fixed-top
 /   .row.add-nav

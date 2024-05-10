@@ -3,10 +3,10 @@
   .title.my-2 = cart_product.product.title
   .d-flex
     .price.mx-2
-      = cart_product.price
+      = format_price(cart_product.price)
     = render 'carts/add_product', cart_product: cart_product
     .count.mx-2
       p = cart_product.quantity
     = render 'carts/sub_product', cart_product: cart_product
-    .total_price = cart_product.total_price
+    .total_price = format_price(cart_product.total_price)
     = render 'carts/remove_product', cart_product: cart_product

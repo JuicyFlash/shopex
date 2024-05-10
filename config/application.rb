@@ -24,5 +24,7 @@ module Shopex
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.session_store :cookie_store, key: '_shopex_session', expire_after: 30.minutes
+    config.i18n.available_locales = %i[ru en]
+    config.i18n.default_locale = :ru
   end
 end

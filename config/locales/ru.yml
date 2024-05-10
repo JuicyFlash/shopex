@@ -1,0 +1,38 @@
+ru:
+  helpers:
+    nav_cart_products: "товаров"
+  shared:
+    top_header:
+      language: "Язык"
+      orders: "Заказы"
+      modal_header: "Вход"
+  carts:
+    put_product_form:
+      put: "Купить"
+  orders:
+    order:
+      title: "Заказ от"
+      product: "Товар"
+      price: "Цена"
+      quantity: "Количество"
+      cost: "Стоимость"
+      total_cost: "Итого"
+    form:
+      header: "Заказ"
+      first_name: "Имя"
+      last_name: "Фамилия"
+      phone: "Телефон"
+      city: "Город"
+      street: "Улица"
+      house: "Дом"
+      create_order: "Оформить"
+  user_sessions:
+    login: "Вход"
+    logout: "Выход"
+    signup: "Регистрация"
+  errors:
+    messages:
+      blank: "Поле не заполнено"
+  locales:
+    en: "Английский"
+    ru: "Русский"

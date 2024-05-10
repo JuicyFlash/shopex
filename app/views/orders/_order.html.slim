@@ -1,27 +1,27 @@
 .order.my-4
   .order-products
     table.table.caption-top.table-bordered
-      caption = "Заказ от #{order.created_at}"
+      caption = "#{t('.title')} #{order.created_at}"
       thead.table-light
         tr
           th scope="col"
-            = "Товар"
+            = t('.product')
           th scope="col"
-            = "Цена"
+            = t('.price')
           th scope="col"
-            = "Количество"
+            = t('.quantity')
           th scope="col"
-            = "Стоимость"
+            = t('.cost')
       tbody
         - order.order_products.find_each do |order_product|
           tr.order-product
-            td scope="row"
+            td
               = order_product.product.title
             td
-              = order_product.price
+              = format_price(order_product.price)
             td
               = order_product.quantity
             td
-              = order_product.total_price
+              = format_price(order_product.total_price)
   .order-total.text-decoration-underline.text
-    = "Итого: #{order.total}"
+    = "#{t('.total_cost')}: #{format_price(order.total)}"

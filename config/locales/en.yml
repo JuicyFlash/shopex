@@ -28,4 +28,40 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  helpers:
+    nav_cart_products: "products"
+  shared:
+    top_header:
+      language: "Language"
+      orders: "Orders"
+      modal_header: "Login"
+  carts:
+    put_product_form:
+      put: "Order"
+  orders:
+    order:
+      title: "Order at"
+      product: "Product"
+      price: "Price"
+      quantity: "Quantity"
+      cost: "Cost"
+      total_cost: "Total"
+    form:
+      header: "Order"
+      first_name: "Name"
+      last_name: "Last name"
+      phone: "Phone"
+      city: "City"
+      street: "Street"
+      house: "House"
+      create_order: "Create order"
+  user_sessions:
+    login: "Login"
+    logout: "Logout"
+    signup: "Sign up"
+  errors:
+    messages:
+      blank: "Can`t be blank"
+  locales:
+    en: "English"
+    ru: "Russian"
