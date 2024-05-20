@@ -7,10 +7,14 @@ ru:
       orders: "Заказы"
       modal_header: "Вход"
   carts:
+    put_product:
+      put_product_note: "Товар добавлен в корзину!"
     put_product_form:
       put: "Купить"
   orders:
-    order:
+    create:
+      create_note: "Заказ оформлен!"
+    order:      
       title: "Заказ от"
       product: "Товар"
       price: "Цена"
@@ -27,12 +31,37 @@ ru:
       house: "Дом"
       create_order: "Оформить"
   user_sessions:
+    email: "E-mail"
+    password: "Пароль"
     login: "Вход"
     logout: "Выход"
+    signup: "Регистрация"   
+    remember: "Запомнить меня"
+  user_registration:
+    email: "E-mail"
+    password: "Пароль"
+    password_minimum: "символов минимум"
+    password_confirmation: "Подтверждение пароля"
     signup: "Регистрация"
   errors:
+    attributes:
+      email:
+        taken: "Такой e-mail уже используется"
+      password:
+        too_short: "Пароль слишком короткий (минимум 6 символов)"
+      password_confirmation:
+        confirmation: "Подтверждение пароля не совпадает с паролем!"
     messages:
       blank: "Поле не заполнено"
+      not_saved: "Не сохранён"
   locales:
     en: "Английский"
     ru: "Русский"
+  devise:
+    failure:
+      not_found_in_database: "Неверный пользователь или пароль"
+    registrations:
+      signed_up: "Добро пожаловать! Вы успешно зарегистрировались."
+    sessions:    
+      signed_in: "Вы вошли"
+      signed_out: "Вы вышли"

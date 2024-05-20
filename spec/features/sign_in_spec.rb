@@ -3,29 +3,41 @@
 require 'rails_helper'
 
 feature 'User can sign in' do
-
   given(:user) { create(:user) }
 
   background { visit new_user_session_path }
 
   scenario 'Registered user tries to sign in', js: true do
-
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    within '.new_user' do
-      click_on 'Log in'
+    within '.email-field' do
+      fill_in 'user_email', with: user.email
     end
 
-    expect(page).to have_content 'Signed in successfully'
+    within '.password-field' do
+      fill_in 'user_password', with: user.password
+    end
+    within '.login-action' do
+      click_on I18n.t('user_sessions.login')
+    end
+
+    expect(page).to have_content I18n.t('devise.sessions.signed_in')
   end
 
   scenario 'Unregistered user tries to sign in' do
-    fill_in 'Email', with: 'wrong@test.com'
-    fill_in 'Password', with: '123456'
-    within '.new_user' do
-      click_on 'Log in'
+    within '.email-field' do
+      fill_in 'user_email', with: 'wrong@test.com'
     end
 
-    expect(page).to have_content 'Invalid Email or password.'
+    within '.password-field' do
+      fill_in 'user_password', with: '123456'
+    end
+    within '.login-action' do
+      click_on I18n.t('user_sessions.login')
+    end
+
+    within '.new_user' do
+      click_on I18n.t('user_sessions.login')
+    end
+
+    expect(page).to have_content I18n.t('devise.failure.not_found_in_database')
   end
 end

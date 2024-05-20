@@ -2,9 +2,14 @@
 
 def sign_in(user)
   visit new_user_session_path
-  fill_in 'Email', with: user.email
-  fill_in 'Password', with: user.password
-  within '.new_user' do
-    click_on 'Log in'
+  within '.email-field' do
+    fill_in 'user_email', with: user.email
+  end
+
+  within '.password-field' do
+    fill_in 'user_password', with: user.password
+  end
+  within '.login-action' do
+    click_on I18n.t('user_sessions.login')
   end
 end

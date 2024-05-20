@@ -1,0 +1,38 @@
+<div class="container sign-up my-3">
+  <div class="col-lg-4 offset-1">
+    <div class="row my-3">
+      <h2 class="w-auto">
+        <%= t('user_registration.signup') %>
+      </h2>
+    </div>
+    <div class="row  justify-content-center">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field">
+          <%= f.label t('user_registration.email') %><br />
+          <%= f.email_field :email, autofocus: true, class: "form-control", autocomplete: "email" %>
+        </div>
+
+        <div class="field my-2">
+          <%= f.label t('user_registration.password') %>
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> <%=t('user_registration.password_minimum')%>)</em>
+          <% end %><br />
+          <%= f.password_field :password, class: "form-control", autocomplete: "new-password" %>
+        </div>
+
+        <div class="field">
+          <%= f.label t('user_registration.password_confirmation') %><br />
+          <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "new-password" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit t('user_registration.signup'), class: "btn btn-dark my-3" %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

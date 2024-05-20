@@ -19,11 +19,11 @@
         .d-flex
           - if user_signed_in?
             = button_to t('user_sessions.logout'), destroy_user_session_path, class: "button btn btn-outline-light rounded-5 mx-3", method: :delete
-            = button_to t('.orders'), orders_path, class: "button btn btn-sm btn-outline-light rounded-5 mx-3 my-1", method: :get
+            = link_to t('.orders'), orders_path, class: "button btn btn-sm btn-outline-light rounded-5 mx-3 my-1"            
           -else
             button.btn.btn-outline-light.rounded-5 data-bs-toggle="modal" data-bs-target="#signInModalForm"
               = t('user_sessions.login')
-            = button_to t('user_sessions.signup'), new_user_registration_path, class: "button btn btn-sm btn-outline-light rounded-5 mx-2 my-1", method: :get
+            = link_to t('user_sessions.signup'), new_user_registration_path, class: "button btn btn-sm btn-outline-light rounded-5 mx-2 my-1"
 
   .row
     .col-1.offset-10.my-1

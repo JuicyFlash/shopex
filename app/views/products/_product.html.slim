@@ -7,7 +7,7 @@
     = product.brand.title.capitalize
   .title.my-4
     h5
-      = product.title.capitalize
+      = link_to product.title.capitalize, product_path(product)      
   .picture
     = image_tag('abt-2.jpg', class: "product-picture")
   = render 'carts/put_product_form', product: product

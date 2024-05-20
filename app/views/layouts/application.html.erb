@@ -21,17 +21,11 @@
         <%end%>
       </div>
     </div>
-
-<!--    <div class="toast-container position-fixed bottom-0 end-0 p-3" id="flash-messages">-->
-
-<!--    </div>-->
-
-<!--    <div class="container text-center my-1">-->
-<!--      <div id="flash-messages">-->
-        <%#= render 'shared/flash' %>
-<!--      </div>-->
-<!--    </div>-->
-
+  <div class="toast-container position-fixed top-3 end-0 p-3">
+    <%= turbo_frame_tag id="flash-messages" do%>
+      <%= render 'shared/flash' %>
+    <% end %>
+  </div>
 
     <%= yield %>
   </body>

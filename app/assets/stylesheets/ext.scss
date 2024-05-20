@@ -1,9 +1,14 @@
 .product-card{
+
   border-radius: 10px;
   background: #fafafa;
   margin-bottom: 20px;
   margin-inline: 1px;
   transition: all ease-in-out 0.3s;
+}
+.product-card a{
+  color: black;
+  text-decoration: none;
 }
 
 .product-card .form-control{
@@ -22,7 +27,7 @@
 .product-card .price{
   font-size: 15px;
 }
-.product-card .title{
+.product-card .title{  
   font-family: 'Lora-Regular';
   text-align: center;
   padding: 25px 0 20px 0px;

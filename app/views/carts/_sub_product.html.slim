@@ -1,3 +1,3 @@
 .sub-product.mx-2
-  = button_to  cart_sub_product_path(product: {product_id: cart_product.product_id, quantity: '1'}), format: 'turbo_stream', method: :patch, type:"button", class: "btn btn-outline-dark btn-sm"
+  = link_to  cart_sub_product_path(product: {product_id: cart_product.product_id, quantity: '1'}), id: "sub-cart-product-#{cart_product.id}", data: { turbo_method: :patch }, class: "btn btn-outline-dark btn-sm"
     = bi_icon('dash-circle')

@@ -36,10 +36,14 @@ en:
       orders: "Orders"
       modal_header: "Login"
   carts:
+    put_product:
+      put_product_note: "Product successfully added to cart!"
     put_product_form:
       put: "Order"
   orders:
-    order:
+    create:
+      create_note: "Order created! "
+    order:      
       title: "Order at"
       product: "Product"
       price: "Price"
@@ -56,10 +60,22 @@ en:
       house: "House"
       create_order: "Create order"
   user_sessions:
+    email: "E-mail"
+    password: "Password"
     login: "Login"
     logout: "Logout"
     signup: "Sign up"
+    remember: "Remember me"
+  user_registration:
+    email: "E-mail"
+    password: "Password"
+    password_minimum: "characters minimum"
+    password_confirmation: "Password confirmation"
+    signup: "Sugn up"
   errors:
+    attributes:
+      email:
+        taken: "Email has already been taken"
     messages:
       blank: "Can`t be blank"
   locales:
