@@ -9,17 +9,16 @@ feature 'User can add product in cart' do
 
     background do
       sign_in(user)
+      sleep 0.2.second
       visit cart_show_path
     end
     scenario 'have add link' do
-      visit cart_show_path
       within "#cart-product-#{cart_product.id}" do
         expect(page).to have_link "add-cart-product-#{cart_product.id}"
       end
     end
 
     scenario 'add product', js: true do
-      visit cart_show_path
       within "#cart-product-#{cart_product.id}" do
         within '.quantity' do
           expect(page).to have_content cart_product.quantity

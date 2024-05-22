@@ -14,19 +14,12 @@
 
    <%= render 'shared/top_header' %>
 
-    <div class="container text-center">
-      <div class="logo">
-        <%= link_to root_path do %>
-          <h1>ShopEX</h1>
-        <%end%>
-      </div>
-    </div>
   <div class="toast-container position-fixed top-3 end-0 p-3">
     <%= turbo_frame_tag id="flash-messages" do%>
       <%= render 'shared/flash' %>
     <% end %>
   </div>
-
-    <%= yield %>
+  
+  <%= yield %> 
   </body>
 </html>

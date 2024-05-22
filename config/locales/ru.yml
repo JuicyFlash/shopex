@@ -2,9 +2,11 @@ ru:
   helpers:
     nav_cart_products: "товаров"
   shared:
-    top_header:
+    nav_bar: 
       language: "Язык"
       orders: "Заказы"
+      admin_panel_title: "Панель администратора"
+    top_header:
       modal_header: "Вход"
   carts:
     put_product:
@@ -54,6 +56,7 @@ ru:
     messages:
       blank: "Поле не заполнено"
       not_saved: "Не сохранён"
+      not_admin: "Вы не авторизованы для этого действия"
   locales:
     en: "Английский"
     ru: "Русский"
@@ -65,3 +68,23 @@ ru:
     sessions:    
       signed_in: "Вы вошли"
       signed_out: "Вы вышли"
+  admin:  
+    shared:
+      sidebar:
+        products: "Товары"
+    products:
+      create:
+        sucessful_created: "Товар успешно создан"
+      form:
+        title: "Название"
+        brand: "Бренд"
+        description: "Описание"
+        price: "Цена"
+        add_product: "Добавить"
+        cancell: "Закрыть"
+      index:
+        title: "Название"
+        description: "Описание"
+        price: "Цена"
+        brand: "Бренд"
+        add_product: "Добавить товар"

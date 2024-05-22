@@ -31,9 +31,11 @@ en:
   helpers:
     nav_cart_products: "products"
   shared:
-    top_header:
+    nav_bar: 
       language: "Language"
       orders: "Orders"
+      admin_panel_title: "Admin panel"      
+    top_header:
       modal_header: "Login"
   carts:
     put_product:
@@ -78,6 +80,27 @@ en:
         taken: "Email has already been taken"
     messages:
       blank: "Can`t be blank"
+      not_admin: "You are not authorized to this action"
   locales:
     en: "English"
     ru: "Russian"
+  admin:  
+    shared:
+      sidebar:
+        products: "Products"
+    products:
+      create:
+        sucessful_created: "Product succesful created"
+      form:
+        title: "Title"
+        brand: "Brand"
+        description: "Description"
+        price: "Price"
+        add_product: "Add"
+        cancell: "Close"
+      index:
+        title: "Products"
+        description: "Description"
+        price: "Price"
+        brand: "Brand"
+        add_product: "Add product"

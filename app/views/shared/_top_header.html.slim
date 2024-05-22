@@ -1,35 +1,6 @@
 .container-fluid.sticky-top
-  .row
-    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-      .container
-        a.navbar-brand href="/"
-          = "ShopEX"
-        button.navbar-toggler type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation"
-          span.navbar-toggler-icon
-        .collapse.navbar-collapse id="navbarContent"
-          ul.navbar-nav.mr-auto.mb-2.mb-lg-0
-            li class="nav-item dropdown"
-              a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
-                = t('.language')
-              ul class="dropdown-menu"
-                - I18n.available_locales.each do |locale|
-                  li
-                    - unless I18n.locale == locale
-                      = link_to t(locale, scope: 'locales'), url_for(lang: locale), class: "dropdown-item"
-        .d-flex
-          - if user_signed_in?
-            = button_to t('user_sessions.logout'), destroy_user_session_path, class: "button btn btn-outline-light rounded-5 mx-3", method: :delete
-            = link_to t('.orders'), orders_path, class: "button btn btn-sm btn-outline-light rounded-5 mx-3 my-1"            
-          -else
-            button.btn.btn-outline-light.rounded-5 data-bs-toggle="modal" data-bs-target="#signInModalForm"
-              = t('user_sessions.login')
-            = link_to t('user_sessions.signup'), new_user_registration_path, class: "button btn btn-sm btn-outline-light rounded-5 mx-2 my-1"
-
-  .row
-    .col-1.offset-10.my-1
-      .nav-cart id="nav-cart"
-        = render 'shared/nav_cart'
-
+  = render 'shared/nav_bar'
+  = render 'shared/nav_bar_cart'
 
 .modal.fade.sign-in-modal id="signInModalForm" tabindex="-1" aria-labelledby="signInModalFormLabel" aria-hidden="true"
   .modal-dialog
@@ -43,10 +14,3 @@
         = render 'users/sign_in'
       .modal-footer
         = link_to t('user_sessions.signup'), new_user_registration_path
-
-/ .container-fluid.fixed-top
-/   .row.add-nav
-/     .col-md-2.mx-auto
-/       .messages id="flash-messages"
-/         = render 'shared/flash'
-    .row

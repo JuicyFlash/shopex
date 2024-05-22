@@ -1,0 +1,27 @@
+.row
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+    .container
+      = link_to "ShopEX", root_path, class: "navbar-brand" 
+      button.navbar-toggler type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation"
+        span.navbar-toggler-icon
+      .collapse.navbar-collapse id="navbarContent"
+        ul.navbar-nav.mr-auto.mb-2.mb-lg-0
+          li class="nav-item dropdown"
+            a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+              = t('.language')
+            ul class="dropdown-menu"
+              - I18n.available_locales.each do |locale|
+                li
+                  - unless I18n.locale == locale
+                    = link_to t(locale, scope: 'locales'), url_for(lang: locale), class: "dropdown-item"
+          - if current_user && current_user.admin?
+            li.px-2
+              = link_to t('.admin_panel_title'), admin_root_path, class: "nav-link"
+      .d-flex
+        - if user_signed_in?
+          = button_to t('user_sessions.logout'), destroy_user_session_path, class: "button btn btn-outline-light rounded-5 mx-3", method: :delete
+          = link_to t('.orders'), orders_path, class: "button btn btn-sm btn-outline-light rounded-5 mx-3 my-1"            
+        -else
+          button.btn.btn-outline-light.rounded-5 data-bs-toggle="modal" data-bs-target="#signInModalForm"
+            = t('user_sessions.login')
+          = link_to t('user_sessions.signup'), new_user_registration_path, class: "button btn btn-sm btn-outline-light rounded-5 mx-2 my-1"

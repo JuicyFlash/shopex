@@ -8,6 +8,7 @@ feature 'User can put out product from cart_products' do
 
     background do
       sign_in(user)
+      sleep 0.2.second
       cart_product.quantity = 3
       cart_product.save
       visit cart_show_path
@@ -18,7 +19,6 @@ feature 'User can put out product from cart_products' do
       end
     end
     scenario 'sub product', js: true do
-      visit cart_show_path
       within "#cart-product-#{cart_product.id}" do
         within '.quantity' do
           expect(page).to have_content cart_product.quantity
@@ -51,7 +51,6 @@ feature 'User can put out product from cart_products' do
       end
     end
     scenario 'sub product', js: true do
-      visit cart_show_path
       within "#cart-product-#{cart_product.id}" do
         within '.quantity' do
           expect(page).to have_content cart_product.quantity

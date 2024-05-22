@@ -1,0 +1,6 @@
+- if @product_saved
+  = turbo_stream.prepend('admin-products', partial: 'product', locals: {product: @product})
+  = turbo_stream.append('flash-messages', partial: 'shared/flash')
+  = turbo_stream.update('new-product-form', partial: 'form', locals: {product: @new_product, brands: @brands})
+- else
+  = turbo_stream.update('new-product-form', partial: 'form', locals: {product: @product, brands: @brands})

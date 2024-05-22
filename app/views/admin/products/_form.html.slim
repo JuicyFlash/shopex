@@ -1,0 +1,27 @@
+div class="stimulus" data-controller="products"  
+  = form_with model: [:admin, product], method: :post, local: false do |f|
+    .row
+      .col-6
+        .row
+          .col-6 
+            .field.product-title
+              = f.label t('.title')
+              = f.text_field :title, class: "form-control form-control-sm", autofocus: true
+              = render 'shared/record_message', record: product, field: 'title'
+          .col-3
+            .field.product-brand
+              = f.label t('.brand') 
+              = f.collection_select :brand_id, brands, :id, :title,{},{class: "form-select form-select-sm"} 
+              = render 'shared/record_message', record: product, field: 'brand_id'
+          .col-3
+            .field.product-price
+            = f.label t('.price')
+            = f.number_field :price, in: 0.00..9000000.00, class: "form-control form-control-sm"
+            = render 'shared/record_message', record: product, field: 'price'
+        .field.product-description
+          = f.label t('.description')
+          = f.text_area :description, class: "form-control form-control-sm"
+          = render 'shared/record_message', record: product, field: 'description'    
+    = f.submit t('.add_product'), class: "btn btn-dark my-3"
+    button class="btn btn-dark btn-sm my-3 mx-2" data-action="click->products#dismissAddProductForm"
+      =t('.cancell')

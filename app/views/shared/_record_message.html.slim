@@ -1,0 +1,3 @@
+- if record.errors[field].present?
+  .message-error
+    = record.errors[field].join('/n')
