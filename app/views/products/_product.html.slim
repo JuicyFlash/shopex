@@ -2,12 +2,15 @@
 /   = product.title
 /   = render 'carts/put_product_form', product: product
 
-.product-card.col-xl-3.overflow-visible.flex-col
+.product-card.col-md-3.overflow-visible.flex-col
   .brand.my-4.mx-2
     = product.brand.title.capitalize
   .title.my-4
     h5
       = link_to product.title.capitalize, product_path(product)      
-  .picture
-    = image_tag('abt-2.jpg', class: "product-picture")
+  .picture.text-center
+    - if product.pictures.attached?
+      = image_tag(product.pictures.first.variant(resize_to_limit: [300, 200]), class: "product-picture")
+    - else  
+      = image_tag('abt-2.jpg', class: "product-picture")
   = render 'carts/put_product_form', product: product
