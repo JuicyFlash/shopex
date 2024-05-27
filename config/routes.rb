@@ -21,9 +21,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'products#index'
-    resources :products, only: %i[create index update] do
-      patch :update_inline, on: :member
+    resources :products, only: %i[create index update edit new] do
+      patch :purge_image, on: :member
     end
-    patch 'product/new' => 'products#new_product'
   end
 end

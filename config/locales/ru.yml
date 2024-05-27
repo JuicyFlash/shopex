@@ -75,13 +75,21 @@ ru:
     products:
       create:
         sucessful_created: "Товар успешно создан"
+      update:
+        sucessful_updated: "Товар успешно изменён"
+      purge_image:
+        sucessful_purged: "Файл удалён"
+        image_not_found: "Файл не найден"
       form:
         title: "Название"
         brand: "Бренд"
         description: "Описание"
         price: "Цена"
+        update_product: "Изменить"
         add_product: "Добавить"
         cancell: "Закрыть"
+        new_image: "Новые файлы"
+        images: "Файлы"
       index:
         title: "Название"
         description: "Описание"

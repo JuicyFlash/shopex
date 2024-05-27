@@ -91,13 +91,21 @@ en:
     products:
       create:
         sucessful_created: "Product succesful created"
+      update:
+        sucessful_updated: "Product succesful updated"
+      purge_image:
+        sucessful_purged: "File sucessful purged"
+        image_not_found: "File not found"
       form:
         title: "Title"
         brand: "Brand"
         description: "Description"
         price: "Price"
+        update_product: "Update"
         add_product: "Add"
         cancell: "Close"
+        new_image: "New files"
+        images: "Files"
       index:
         title: "Products"
         description: "Description"

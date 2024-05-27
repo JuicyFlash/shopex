@@ -1,6 +1,6 @@
 tr id="admin-product-#{product.id}"
   td
-    = link_to admin_root_path, class: "btn btn-outline-dark btn-sm" 
+    = link_to edit_admin_product_path(product), class: "btn btn-outline-dark btn-sm", data: { turbo_stream: true }
       i class="bi bi-pencil-square"
   td
     = product.id
