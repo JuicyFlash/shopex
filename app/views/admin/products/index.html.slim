@@ -8,7 +8,7 @@ div class="container-fluid"
       = link_to t('.add_product'), new_admin_product_path, data: { turbo_stream: true }
       div.my-3#new-product-form
         - if @product
-          = render 'form', product: @product, brands: @brands, action: :create
+          = render 'form', product: @product, brands: @brands, properties: @properties, action: :create
       div class="table-responsive small"
         table class="table table-striped table-sm"
           thead
