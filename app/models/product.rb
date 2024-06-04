@@ -11,7 +11,7 @@ class Product < ApplicationRecord
 
   validates :title, :description, presence: true
 
-  def have_property_value?(value)
+  def property_value?(value)
     !product_property.find_by(property_value_id: value.id).nil?
   end
 end

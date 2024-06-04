@@ -24,5 +24,7 @@ Rails.application.routes.draw do
     resources :products, only: %i[create index update edit new] do
       patch :purge_image, on: :member
     end
+
+    resources :properties
   end
 end

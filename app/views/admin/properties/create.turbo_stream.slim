@@ -1,0 +1,6 @@
+- if @property_saved
+  = turbo_stream.prepend('admin-properties', partial: 'property', locals: { property: @property })
+  = turbo_stream.append('flash-messages', partial: 'shared/flash')
+  = turbo_stream.update('new-property-form', partial: 'form', locals: { property: @new_property, action: :create })
+- else
+  = turbo_stream.update('new-property-form', partial: 'form', locals: { property: @property, action: :create })
