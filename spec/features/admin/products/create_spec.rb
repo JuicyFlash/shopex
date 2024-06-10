@@ -6,6 +6,7 @@ feature 'User can create new product' do
   given(:user_admin) { create(:user, admin: true) }
   given!(:user) { create(:user, admin: false) }
   given!(:brand) { create(:brand) }
+  given(:property) { create(:property) }
 
   describe 'authorized user' do
     background do
