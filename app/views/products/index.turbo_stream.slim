@@ -1,0 +1,8 @@
+/ = turbo_stream.append "products"  
+/   = render partial: "products/products", products: @products 
+= turbo_stream.update("products", partial: 'products', locals: {products: @products})
+
+
+= turbo_stream.update("load-more-button", partial: 'load_more_button', locals: {pagy: @pagy} )
+/ = turbo_stream.update "load_more_button" 
+/   = render "products/load_more_button" 

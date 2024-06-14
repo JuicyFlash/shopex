@@ -3,7 +3,13 @@ class ProductsController < ApplicationController
   before_action :find_cart, only: %i[index show]
 
   def index
-    @products = Product.with_attached_images.all
+    query = Product.with_attached_images.all
+    @pagy, @products = pagy(query, items: 3)
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def show; end
