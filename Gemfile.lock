@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/arielj/vanilla-nested.git
+  revision: cab8f390dc99eed933952f6fcc14603bad30c6a8
+  branch: main
+  specs:
+    vanilla_nested (1.7.0)
+
+GIT
   remote: https://github.com/heartcombo/devise.git
   revision: f8d1ea90bc328012f178b8a6616a89b73f2546a4
   ref: f8d1ea90bc3
@@ -386,6 +393,7 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
+  vanilla_nested!
   web-console
 
 RUBY VERSION

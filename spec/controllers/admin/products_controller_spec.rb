@@ -19,13 +19,11 @@ RSpec.describe Admin::ProductsController, type: :controller do
     end
 
     describe 'POST#create' do
-      let(:barnd) { create(:brand) }
-      let(:product) do
-        build(:product, title: Faker::Commerce.product_name,
-                        description: Faker::Lorem.sentence(word_count: 3, supplemental: true),
-                        brand_id: barnd.id,
-                        price: Faker::Commerce.price)
-      end
+      let(:property) { create(:property) }
+      let(:prop_values) { create_list(:property_value, 3, property:) }
+      let(:brand) { create(:brand) }
+      let(:product) { build(:product, brand:) }
+
       it 'create new product' do
         expect do
           post :create, params: { product:
@@ -41,13 +39,32 @@ RSpec.describe Admin::ProductsController, type: :controller do
           expect(Product.first.send(field)).to eq(product.send(field))
         end
       end
+      it 'create new product with nested properties values' do
+        expect do
+          post :create, params: { product:
+                                          {
+                                            title: product.title,
+                                            description: product.description,
+                                            brand_id: product.brand_id,
+                                            price: product.price,
+                                            product_property_attributes: { "1": { property_id: property.id,
+                                                                                  property_value_id: prop_values[0].id },
+                                                                           "2": { property_id: property.id,
+                                                                                  property_value_id: prop_values[1].id },
+                                                                           "3": { property_id: property.id,
+                                                                                  property_value_id: prop_values[2].id } }
+                                          } }, format: :turbo_stream
+        end.to change(Product, :count).by(1) && change(ProductProperty, :count).by(3)
+
+        expect(Product.first.product_property.pluck(:property_value_id)).to match_array(prop_values.pluck(:id))
+      end
       it 'does not create new product with wrong params' do
         expect do
           post :create, params: { product:
                                           {
                                             title: nil,
                                             description: Faker::Lorem.sentence(word_count: 3, supplemental: true),
-                                            brand_id: barnd.id,
+                                            brand_id: brand.id,
                                             price: Faker::Commerce.price
                                           } }, format: :turbo_stream
         end.to change(Product, :count).by(0)
@@ -55,14 +72,12 @@ RSpec.describe Admin::ProductsController, type: :controller do
     end
 
     describe 'PATCH#update' do
+      let(:property) { create(:property) }
+      let(:prop_values) { create_list(:property_value, 3, property:) }
       let(:barnd) { create(:brand) }
       let(:updated_brand) { create(:brand) }
-      let(:product) do
-        create(:product, title: Faker::Commerce.product_name,
-                         description: Faker::Lorem.sentence(word_count: 3, supplemental: true),
-                         brand_id: barnd.id,
-                         price: Faker::Commerce.price)
-      end
+      let(:product) { create(:product) }
+
       it 'update product' do
         updated_product =
           build(:product, title: 'Updated title',
@@ -79,6 +94,28 @@ RSpec.describe Admin::ProductsController, type: :controller do
         %i[title description brand_id price].each do |field|
           expect(Product.first.send(field)).to eq(updated_product.send(field))
         end
+      end
+      it 'update(delete) nested properties values' do
+        prop_values.each do |value|
+          create(:product_property, product:, property:, property_value: value)
+        end
+        expect do
+          patch :update, params: { id: product, product:
+                                            {
+                                              title: product.title,
+                                              description: product.description,
+                                              brand_id: product.brand_id,
+                                              price: product.price,
+                                              product_property_attributes: { "1": { property_id: property.id,
+                                                                                    property_value_id: prop_values[0].id },
+                                                                             "2": { property_id: property.id,
+                                                                                    property_value_id: prop_values[1].id },
+                                                                             "3": { property_id: property.id,
+                                                                                    property_value_id: -1 * prop_values[2].id } }
+                                            } }, format: :turbo_stream
+        end.to change(ProductProperty, :count).by(-1)
+
+        expect(Product.first.product_property.pluck(:property_value_id)).to match_array(prop_values[0..1].pluck(:id))
       end
       it 'does not create update product with wrong params' do
         updated_product =

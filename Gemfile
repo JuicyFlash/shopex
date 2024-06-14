@@ -55,6 +55,10 @@ gem 'devise', github: 'heartcombo/devise', ref: 'f8d1ea90bc3'
 gem 'bootstrap'
 gem 'bootstrap_icons_rails'
 gem 'sassc-rails'
+
+# vanilla-nested
+gem 'vanilla_nested', github: 'arielj/vanilla-nested', branch: :main
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]

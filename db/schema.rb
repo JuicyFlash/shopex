@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_22_214825) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_30_170236) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -96,6 +96,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_22_214825) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "product_properties", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "property_id"
+    t.bigint "property_value_id"
+    t.bigint "product_id"
+    t.index ["product_id"], name: "index_product_properties_on_product_id"
+    t.index ["property_id"], name: "index_product_properties_on_property_id"
+    t.index ["property_value_id"], name: "index_product_properties_on_property_value_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -104,6 +115,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_22_214825) do
     t.bigint "brand_id"
     t.decimal "price", precision: 10, scale: 2, default: "0.0"
     t.index ["brand_id"], name: "index_products_on_brand_id"
+  end
+
+  create_table "properties", force: :cascade do |t|
+    t.string "name"
+    t.boolean "unique", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "property_values", force: :cascade do |t|
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "property_id"
+    t.index ["property_id"], name: "index_property_values_on_property_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -128,5 +154,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_22_214825) do
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
   add_foreign_key "orders", "users"
+  add_foreign_key "product_properties", "products"
+  add_foreign_key "product_properties", "properties"
+  add_foreign_key "product_properties", "property_values"
   add_foreign_key "products", "brands"
+  add_foreign_key "property_values", "properties"
 end

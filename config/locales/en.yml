@@ -88,6 +88,28 @@ en:
     shared:
       sidebar:
         products: "Products"
+        properties: "Properties"
+    properties:
+      create:
+        sucessful_created: "Property succesful created"
+      update:
+        sucessful_updated: "Property succesful updated"
+      destroy:
+        sucessful_deleted: "Property succesful deleted"
+      index:
+        title: "Properties"
+        name: "Property name"
+        unique: "Unique"
+        add_property: "Add property"
+      form:
+        name: "Name"
+        unique: "Unique"
+        update_property: "Update"
+        add_property: "Add"
+        add_value: "Add new value"
+        cancell: "Close"
+      property_value_fields:
+        value: "Value"
     products:
       create:
         sucessful_created: "Product succesful created"

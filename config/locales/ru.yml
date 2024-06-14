@@ -72,6 +72,28 @@ ru:
     shared:
       sidebar:
         products: "Товары"
+        properties: "Свойства"
+    properties:
+      create:
+        sucessful_created: "Свойство успешно создано"
+      update:
+        sucessful_updated: "Свойство успешно изменено"
+      destroy:
+        sucessful_deleted: "Свойство успешно удалено"
+      form:
+        name: "Название свойства"
+        unique: "Уникальное"
+        update_property: "Изменить"
+        add_property: "Добавить"
+        add_value: "Добавить новое значение"
+        cancell: "Закрыть"
+      property_value_fields:
+        value: "Значение"
+      index:
+        title: "Свойства"
+        name: "Название"
+        unique: "Уникальное"
+        add_property: "Добавить свойство"
     products:
       create:
         sucessful_created: "Товар успешно создан"

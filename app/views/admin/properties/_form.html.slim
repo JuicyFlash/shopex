@@ -1,0 +1,29 @@
+div class="stimulus" data-controller="properties"  
+  = form_with model: [:admin, property], method: action == :create ? :post : :patch, local: false do |f|
+    .row
+      .col-4        
+        .field.property-name
+          = f.label t('.name')
+          = f.text_field :name, class: "form-control form-control-sm"
+          = render 'shared/record_message', record: property, field: 'name'        
+          .d-flex.justify-content-between.property-unique            
+            .d-flex.mt-2
+              = f.label :unique, t('.unique'), { class:"form-check-label" }
+              = f.check_box :unique, { class: "form-check mx-1", checked: action == :create ? false : property.unique }, 1, 0 
+            = link_to_add_nested(f, :property_values, '#property-values', link_text: t('.add_value'), link_classes: 'btn btn-outline-dark btn-sm mt-2', insert_method: :prepend) 
+      .col-8                
+        - if action == :create
+          .row.justify-content-start#property-values          
+            = f.fields_for :property_values do |property_values_form|              
+              = render 'property_value_fields', form: property_values_form
+        - if action == :update
+          .row.justify-content-start#property-values
+            - property.property_values.find_each do |property_value|         
+              = f.fields_for :property_values, property_value do |property_values_form|                 
+                = render 'property_value_fields', form: property_values_form        
+    - if action == :create
+      = f.submit t('.add_property'), class: "btn btn-dark my-3"
+    - if action == :update
+       = f.submit t('.update_property'), class: "btn btn-dark my-3"
+    button class="btn btn-dark btn-sm my-3 mx-2" data-action="click->properties#dismissAddPropertyForm"
+      =t('.cancell')
