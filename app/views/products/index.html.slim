@@ -2,5 +2,17 @@
 /   = render 'shared/banner'
 = render 'shared/logo'
 .container-lg.my-5
-  .row.justify-content-around
-    = render @products
+  .row.justify-content-begin#load-more-button
+    / == pagy_nav(@pagy)
+    / == pagy_info(@pagy)
+    = render "load_more_button", pagy: @pagy
+  div data-controller="url" data-url-page-value="Page Name" data-url-path-value="/products?page=7"
+    = turbo_frame_tag id = "pagy-products"
+      = link_to "next", products_path({ page: 2 }), data: {  action: "click->url#AddPath", turbo_stream: "true", turbo_method: :get, turbo_frame: "page"}
+
+  .row.justify-content-around#products    
+    = render 'products', products: @products
+
+/ a href="/products?page=2" rel="next" 
+/       = "Next page test"
+/ turbo_stream: "true",
