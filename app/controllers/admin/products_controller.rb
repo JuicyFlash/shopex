@@ -36,7 +36,7 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def update
-    @product_updated = @product.update(product_params.except(:images, product_property_attributes))
+    @product_updated = @product.update(product_params.except(:images, :product_property_attributes))
     if @product_updated
       @product.images.attach(product_params[:images])
 
@@ -53,6 +53,7 @@ class Admin::ProductsController < Admin::BaseController
           @product.product_property.where(property_value_id: param_property['property_value_id'].to_i * -1).delete_all
         end
       end
+      @product.save
 
       respond_to do |format|
         format.turbo_stream { flash.now[:notice] = t('.sucessful_updated') }

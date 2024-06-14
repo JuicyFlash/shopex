@@ -3,5 +3,5 @@
   = turbo_stream.append('flash-messages', partial: 'shared/flash')
   = turbo_stream.update('new-product-form', partial: 'form', locals: { product: @product, brands: @brands, properties: @properties, action: :update })
 - else
-  = turbo_stream.update('new-product-form', partial: 'form', locals: { product: @product, brands: @brands, action: :create })
+  = turbo_stream.update('new-product-form', partial: 'form', locals: { product: @product, brands: @brands, properties: @properties, action: :create })
   = turbo_stream.append('flash-messages', partial: 'shared/flash')
