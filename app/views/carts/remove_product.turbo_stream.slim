@@ -1,2 +1,4 @@
 = turbo_stream.update('nav-cart', partial: 'shared/nav_cart')
 = turbo_stream.remove("cart-product-#{@cart_product.id}")
+-unless @cart.cart_products.present?
+  = turbo_stream.update('cart', partial: 'carts/cart')

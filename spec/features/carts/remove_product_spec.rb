@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'User can purge product from basket_products' do
-
   describe 'authenticated user' do
     given!(:user) { create(:user) }
     given!(:cart) { create(:cart, user:) }
@@ -15,14 +14,14 @@ feature 'User can purge product from basket_products' do
     end
     scenario 'have purge link' do
       within "#cart-product-#{cart_product.id}" do
-        expect(page).to have_link 'remove'
+        expect(page).to have_link "remove-cart-product-#{cart_product.id}"
       end
     end
 
     scenario 'remove product' do
       within "#cart-product-#{cart_product.id}" do
         expect(page).to have_content cart_product.product.title
-        click_on 'remove'
+        click_on "remove-cart-product-#{cart_product.id}"
       end
 
       expect(page).to_not have_content cart_product.product.title
@@ -42,14 +41,14 @@ feature 'User can purge product from basket_products' do
     end
     scenario 'have purge link' do
       within "#cart-product-#{cart_product.id}" do
-        expect(page).to have_link 'remove'
+        expect(page).to have_link "remove-cart-product-#{cart_product.id}"
       end
     end
 
     scenario 'remove product' do
       within "#cart-product-#{cart_product.id}" do
         expect(page).to have_content cart_product.product.title
-        click_on 'remove'
+        click_on "remove-cart-product-#{cart_product.id}"
       end
 
       expect(page).to_not have_content cart_product.product.title

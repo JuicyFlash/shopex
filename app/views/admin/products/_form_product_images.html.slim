@@ -1,0 +1,7 @@
+.d-flex.flex-row.images.my-3#product-attached-images
+  - if product.images.attached? 
+    - product.images.find_each do |image|                  
+      .d-flex.flex-column.text-center                          
+        = image_tag(image.variant(resize_to_limit: [150, 150]), class: "mx-1")
+        = link_to purge_image_admin_product_path(product, image_id: image.id), data: { turbo_method: :patch }
+          i class="bi bi-x-lg btn btn-outline-dark btn-sm my-2"  

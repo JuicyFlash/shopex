@@ -1,0 +1,27 @@
+.order.my-4
+  .order-products
+    table.table.caption-top.table-bordered
+      caption = "#{t('.title')} #{order.created_at}"
+      thead.table-light
+        tr
+          th scope="col"
+            = t('.product')
+          th scope="col"
+            = t('.price')
+          th scope="col"
+            = t('.quantity')
+          th scope="col"
+            = t('.cost')
+      tbody
+        - order.order_products.find_each do |order_product|
+          tr.order-product
+            td
+              = order_product.product.title
+            td
+              = format_price(order_product.price)
+            td
+              = order_product.quantity
+            td
+              = format_price(order_product.total_price)
+  .order-total.text-decoration-underline.text
+    = "#{t('.total_cost')}: #{format_price(order.total)}"

@@ -9,13 +9,17 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <%= render 'shared/nav' %>
-
-  <div id="flash-messages">
-    <%= render 'shared/flash' %>
-  </div>
 
   <body>
-    <%= yield %>
+
+   <%= render 'shared/top_header' %>
+
+  <div class="toast-container position-fixed top-3 end-0 p-3">
+    <%= turbo_frame_tag id="flash-messages" do%>
+      <%= render 'shared/flash' %>
+    <% end %>
+  </div>
+  
+  <%= yield %> 
   </body>
 </html>

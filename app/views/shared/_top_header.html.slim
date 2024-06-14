@@ -1,0 +1,16 @@
+.container-fluid.sticky-top
+  = render 'shared/nav_bar'
+  = render 'shared/nav_bar_cart'
+
+.modal.fade.sign-in-modal id="signInModalForm" tabindex="-1" aria-labelledby="signInModalFormLabel" aria-hidden="true"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        .row
+          h5 = t('.modal_header')
+        h5.modal-title.fs-5#signInModalFormLabel
+        button.btn-close  type="button" data-bs-dismiss="modal" aria-label="close"
+      .modal-body
+        = render 'users/sign_in'
+      .modal-footer
+        = link_to t('user_sessions.signup'), new_user_registration_path

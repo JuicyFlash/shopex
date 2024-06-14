@@ -1,40 +1,37 @@
-.order-form
+.container
   = form_with model: order, local: false do |order_form|
+    .row
+      h4.label
+        = t('.header')
     = order_form.fields_for :detail, order.detail do |detail_form|
-      .row
+      .row.my-3
         .col-md-6
-          = detail_form.label :Name
-          p
-          = detail_form.text_field :first_name, class: "form-control"
-          = render 'orders/detail_message', detail: order.detail, field: 'first_name'
+          = detail_form.label t('.first_name'), class: "label", for: "order-name"
+          = detail_form.text_field :first_name, id: "order-name", class: "form-control form-control-sm"
+          = render 'shared/record_message', record: order.detail, field: 'first_name'
         .col-md-6
-          = detail_form.label :Surname
-          p
-          = detail_form.text_field :last_name, class: "form-control"
-          = render 'orders/detail_message', detail: order.detail, field: 'last_name'
-      p
-      .row
-        .col-md-6
-          = detail_form.label :City
-          p
-          = detail_form.text_field :city, class: "form-control"
-          = render 'orders/detail_message', detail: order.detail, field: 'city'
-        .col-md-6
-          = detail_form.label :Phone
-          p
-          = detail_form.text_field :phone_number, class: "form-control"
-          = render 'orders/detail_message', detail: order.detail, field: 'phone'
-      p
-      .row
-        .col-md-9
-          = detail_form.label :Street
-          p
-          = detail_form.text_field :street, class: "form-control"
-          = render 'orders/detail_message', detail: order.detail, field: 'street'
-        .col-md-3
-          = detail_form.label :House
-          p
-          = detail_form.text_field :house_number, class: "form-control"
-          = render 'orders/detail_message', detail: order.detail, field: 'street'
+          = detail_form.label t('.last_name'), class: "label", for: "order-surname"
+          = detail_form.text_field :last_name, id: "order-surname", class: "form-control form-control-sm"
+          = render 'shared/record_message', record: order.detail, field: 'last_name'
 
-    = order_form.submit 'Create', name: 'create', class: "btn btn-outline-dark"
+      .row.my-3
+        .col-md-6
+          = detail_form.label t('.city'), class: "label", for: "order-city"
+          = detail_form.text_field :city, id:"order-city", class: "form-control form-control-sm"
+          = render 'shared/record_message', record: order.detail, field: 'city'
+        .col-md-6
+          = detail_form.label t('.phone'), class: "label", for: "order-phone"
+          = detail_form.text_field :phone_number, id: "order-phone", class: "form-control form-control-sm"
+          = render 'shared/record_message', record: order.detail, field: 'phone'
+
+      .row.my-3
+        .col-md-9
+          = detail_form.label t('.street'), class: "label", for: "order-street"
+          = detail_form.text_field :street, id: "order-street", class: "form-control form-control-sm"
+          = render 'shared/record_message', record: order.detail, field: 'street'
+        .col-md-3
+          = detail_form.label t('.house'), class: "label", for: "order-house"
+          = detail_form.text_field :house_number, id: "order-house", class: "form-control form-control-sm"
+          = render 'shared/record_message', record: order.detail, field: 'street'
+
+    = order_form.submit t('.create_order'), name: 'create', class: "btn btn-outline-light my-4"

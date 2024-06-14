@@ -1,6 +1,6 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -14,7 +14,7 @@ module Shopex
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w(assets tasks))
+    config.autoload_lib(ignore: %w[assets tasks])
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -24,5 +24,15 @@ module Shopex
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.session_store :cookie_store, key: '_shopex_session', expire_after: 30.minutes
+    config.i18n.available_locales = %i[ru en]
+    config.i18n.default_locale = :ru
+    # Over-ride default image variant processer as ImageMagick
+    config.active_storage.variant_processor = :mini_magick
+    # Over-ride default image analyzer as ImageMagick
+    config.active_storage.analyzers = [
+      ActiveStorage::Analyzer::ImageAnalyzer::ImageMagick,
+      ActiveStorage::Analyzer::VideoAnalyzer,
+      ActiveStorage::Analyzer::AudioAnalyzer
+    ]
   end
 end

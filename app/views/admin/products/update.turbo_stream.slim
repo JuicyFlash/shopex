@@ -1,0 +1,7 @@
+- if @product_updated  
+  = turbo_stream.replace("admin-product-#{@product.id}", partial: 'product', locals: {product: @product})
+  = turbo_stream.append('flash-messages', partial: 'shared/flash')
+  = turbo_stream.update('new-product-form', partial: 'form', locals: { product: @product, brands: @brands, action: :update })  
+- else
+  = turbo_stream.update('new-product-form', partial: 'form', locals: { product: @product, brands: @brands, action: :update })
+  = turbo_stream.append('flash-messages', partial: 'shared/flash')

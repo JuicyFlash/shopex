@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   has_one :cart, dependent: :destroy
   has_many :orders
   # Include default devise modules. Others available are:
@@ -8,6 +7,10 @@ class User < ApplicationRecord
 
   validates :email, :password, presence: true
 
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "Incorrect email format", on: [:create, :update] },
-            uniqueness: { on: [:create, :update] }
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: 'Incorrect email format', on: %i[create update] },
+                    uniqueness: { on: %i[create update] }
+
+  def admin?
+    admin
+  end
 end

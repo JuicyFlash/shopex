@@ -1,0 +1,100 @@
+ru:
+  helpers:
+    nav_cart_products: "товаров"
+  shared:
+    nav_bar: 
+      language: "Язык"
+      orders: "Заказы"
+      admin_panel_title: "Панель администратора"
+    top_header:
+      modal_header: "Вход"
+  carts:
+    put_product:
+      put_product_note: "Товар добавлен в корзину!"
+    put_product_form:
+      put: "Купить"
+  orders:
+    create:
+      create_note: "Заказ оформлен!"
+    order:      
+      title: "Заказ от"
+      product: "Товар"
+      price: "Цена"
+      quantity: "Количество"
+      cost: "Стоимость"
+      total_cost: "Итого"
+    form:
+      header: "Заказ"
+      first_name: "Имя"
+      last_name: "Фамилия"
+      phone: "Телефон"
+      city: "Город"
+      street: "Улица"
+      house: "Дом"
+      create_order: "Оформить"
+  user_sessions:
+    email: "E-mail"
+    password: "Пароль"
+    login: "Вход"
+    logout: "Выход"
+    signup: "Регистрация"   
+    remember: "Запомнить меня"
+  user_registration:
+    email: "E-mail"
+    password: "Пароль"
+    password_minimum: "символов минимум"
+    password_confirmation: "Подтверждение пароля"
+    signup: "Регистрация"
+  errors:
+    attributes:
+      email:
+        taken: "Такой e-mail уже используется"
+      password:
+        too_short: "Пароль слишком короткий (минимум 6 символов)"
+      password_confirmation:
+        confirmation: "Подтверждение пароля не совпадает с паролем!"
+    messages:
+      blank: "Поле не заполнено"
+      not_saved: "Не сохранён"
+      not_admin: "Вы не авторизованы для этого действия"
+  locales:
+    en: "Английский"
+    ru: "Русский"
+  devise:
+    failure:
+      not_found_in_database: "Неверный пользователь или пароль"
+    registrations:
+      signed_up: "Добро пожаловать! Вы успешно зарегистрировались."
+    sessions:    
+      signed_in: "Вы вошли"
+      signed_out: "Вы вышли"
+  admin:  
+    shared:
+      sidebar:
+        products: "Товары"
+    products:
+      create:
+        sucessful_created: "Товар успешно создан"
+        wrong_created: "Не удалось создать товар"
+      update:
+        sucessful_updated: "Товар успешно изменён"
+        wrong_updated: "Не удалось изменить товар"
+      purge_image:
+        sucessful_purged: "Файл удалён"
+        image_not_found: "Файл не найден"
+      form:
+        title: "Название"
+        brand: "Бренд"
+        description: "Описание"
+        price: "Цена"
+        update_product: "Изменить"
+        add_product: "Добавить"
+        cancell: "Закрыть"
+        new_image: "Новые файлы"
+        images: "Файлы"
+      index:
+        title: "Название"
+        description: "Описание"
+        price: "Цена"
+        brand: "Бренд"
+        add_product: "Добавить товар"

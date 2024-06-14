@@ -28,4 +28,89 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  helpers:
+    nav_cart_products: "products"
+  shared:
+    nav_bar: 
+      language: "Language"
+      orders: "Orders"
+      admin_panel_title: "Admin panel"      
+    top_header:
+      modal_header: "Login"
+  carts:
+    put_product:
+      put_product_note: "Product successfully added to cart!"
+    put_product_form:
+      put: "Order"
+  orders:
+    create:
+      create_note: "Order created! "
+    order:      
+      title: "Order at"
+      product: "Product"
+      price: "Price"
+      quantity: "Quantity"
+      cost: "Cost"
+      total_cost: "Total"
+    form:
+      header: "Order"
+      first_name: "Name"
+      last_name: "Last name"
+      phone: "Phone"
+      city: "City"
+      street: "Street"
+      house: "House"
+      create_order: "Create order"
+  user_sessions:
+    email: "E-mail"
+    password: "Password"
+    login: "Login"
+    logout: "Logout"
+    signup: "Sign up"
+    remember: "Remember me"
+  user_registration:
+    email: "E-mail"
+    password: "Password"
+    password_minimum: "characters minimum"
+    password_confirmation: "Password confirmation"
+    signup: "Sugn up"
+  errors:
+    attributes:
+      email:
+        taken: "Email has already been taken"
+    messages:
+      blank: "Can`t be blank"
+      not_admin: "You are not authorized to this action"
+  locales:
+    en: "English"
+    ru: "Russian"
+  admin:  
+    shared:
+      sidebar:
+        products: "Products"
+    products:
+      create:
+        sucessful_created: "Product succesful created"
+        wrong_created: "Wrong create product"
+      update:
+        sucessful_updated: "Product succesful updated"
+        wrong_updated: "Wrong update"
+      purge_image:
+        sucessful_purged: "File sucessful purged"
+        image_not_found: "File not found"
+      form:
+        title: "Title"
+        brand: "Brand"
+        description: "Description"
+        price: "Price"
+        update_product: "Update"
+        add_product: "Add"
+        cancell: "Close"
+        new_image: "New files"
+        images: "Files"
+      index:
+        title: "Products"
+        description: "Description"
+        price: "Price"
+        brand: "Brand"
+        add_product: "Add product"

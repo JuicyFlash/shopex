@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class CartsController < ApplicationController
-
   before_action :find_cart, only: %i[put_product add_product sub_product remove_product show]
 
   def show
@@ -15,16 +14,16 @@ class CartsController < ApplicationController
     if @cart.product_exist_in_cart?(cart_product_params[:product_id])
       if update_cart_product
         respond_to do |format|
-          format.turbo_stream { flash.now[:notice] = 'Product successfully added to cart!' }
-          format.html { redirect_to root_path, notice: 'Product successfully added to cart!' }
+          format.turbo_stream { flash.now[:notice] = t('.put_product_note') }
+          format.html { redirect_to root_path, notice: t('.put_product_note') }
         end
       end
     else
       @cart.cart_products.new(cart_product_params)
       if @cart.save
         respond_to do |format|
-          format.turbo_stream { flash.now[:notice] = 'Product successfully added to cart!' }
-          format.html { redirect_to root_path, notice: 'Product successfully added to cart!' }
+          format.turbo_stream { flash.now[:notice] = t('.put_product_note') }
+          format.html { redirect_to root_path, notice: t('.put_product_note') }
         end
       end
     end

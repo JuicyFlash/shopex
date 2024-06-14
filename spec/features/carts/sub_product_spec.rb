@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'User can put out product from cart_products' do
-
   describe 'authenticated user' do
     given!(:user) { create(:user) }
     given!(:cart) { create(:cart, user:) }
@@ -9,22 +8,22 @@ feature 'User can put out product from cart_products' do
 
     background do
       sign_in(user)
+      sleep 0.2.second
       cart_product.quantity = 3
       cart_product.save
       visit cart_show_path
     end
     scenario 'have sub link' do
       within "#cart-product-#{cart_product.id}" do
-        expect(page).to have_link 'sub'
+        expect(page).to have_link "sub-cart-product-#{cart_product.id}"
       end
     end
     scenario 'sub product', js: true do
-      visit cart_show_path
       within "#cart-product-#{cart_product.id}" do
         within '.quantity' do
           expect(page).to have_content cart_product.quantity
         end
-        click_on 'sub'
+        click_on "sub-cart-product-#{cart_product.id}"
       end
       within "#cart-product-#{cart_product.id}" do
         within '.quantity' do
@@ -48,16 +47,15 @@ feature 'User can put out product from cart_products' do
     end
     scenario 'have sub link' do
       within "#cart-product-#{cart_product.id}" do
-        expect(page).to have_link 'sub'
+        expect(page).to have_link "sub-cart-product-#{cart_product.id}"
       end
     end
     scenario 'sub product', js: true do
-      visit cart_show_path
       within "#cart-product-#{cart_product.id}" do
         within '.quantity' do
           expect(page).to have_content cart_product.quantity
         end
-        click_on 'sub'
+        click_on "sub-cart-product-#{cart_product.id}"
       end
       within "#cart-product-#{cart_product.id}" do
         within '.quantity' do

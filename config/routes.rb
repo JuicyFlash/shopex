@@ -18,4 +18,11 @@ Rails.application.routes.draw do
   patch 'cart/sub_product' => 'carts#sub_product'
   patch 'cart/remove_product' => 'carts#remove_product'
   get 'cart/show' => 'carts#show'
+
+  namespace :admin do
+    root 'products#index'
+    resources :products, only: %i[create index update edit new] do
+      patch :purge_image, on: :member
+    end
+  end
 end

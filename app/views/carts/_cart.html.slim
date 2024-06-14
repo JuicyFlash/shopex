@@ -1,0 +1,11 @@
+.container.cart id="cart"
+  - if @cart.cart_products.present?
+    .row
+      .col-md-6
+        .new-order id="new-order"
+          = render 'orders/form', order: @order
+      .col-md-6
+        .container.basket_products
+          = render @cart.cart_products
+  - else
+    h5.text-center = "Ваша корзина пуста"
