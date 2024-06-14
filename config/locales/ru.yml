@@ -75,8 +75,10 @@ ru:
     products:
       create:
         sucessful_created: "Товар успешно создан"
+        wrong_created: "Не удалось создать товар"
       update:
         sucessful_updated: "Товар успешно изменён"
+        wrong_updated: "Не удалось изменить товар"
       purge_image:
         sucessful_purged: "Файл удалён"
         image_not_found: "Файл не найден"

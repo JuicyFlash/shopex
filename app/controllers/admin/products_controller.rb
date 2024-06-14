@@ -34,28 +34,35 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def update
-    @product.title = product_params[:title]
-    @product.description = product_params[:description]
-    @product.brand_id = product_params[:brand_id]
-    @product.price = product_params[:price]
-    @product.images.attach(product_params[:images])
-
-    return unless (@product_updated = @product.save)
-
-    respond_to do |format|
-      format.turbo_stream { flash.now[:notice] = t('.sucessful_updated') }
-      format.html { redirect_to admin_products_path, notice: t('.sucessful_updated') }
+    @product_updated = @product.update(product_params.except(:images))
+    if @product_updated
+      @product.images.attach(product_params[:images])
+      respond_to do |format|
+        format.turbo_stream { flash.now[:notice] = t('.sucessful_updated') }
+        format.html { redirect_to admin_products_path, notice: t('.sucessful_updated') }
+      end
+    else
+      respond_to do |format|
+        format.turbo_stream { flash.now[:notice] = t('.wrong_updated') }
+        format.html { redirect_to admin_products_path, notice: t('.wrong_updated') }
+      end
     end
   end
 
   def create
     @product = Product.new(product_params)
-    return unless (@product_saved = @product.save)
-
-    @new_product = Product.new
-    respond_to do |format|
-      format.turbo_stream { flash.now[:notice] = t('.sucessful_created') }
-      format.html { redirect_to admin_products_path, notice: t('.sucessful_created') }
+    @product_saved = @product.save
+    if @product_saved
+      @new_product = Product.new
+      respond_to do |format|
+        format.turbo_stream { flash.now[:notice] = t('.sucessful_created') }
+        format.html { redirect_to admin_products_path, notice: t('.sucessful_created') }
+      end
+    else
+      respond_to do |format|
+        format.turbo_stream { flash.now[:notice] = t('.wrong_created') }
+        format.html { redirect_to admin_products_path, notice: t('.wrong_created') }
+      end
     end
   end
 
