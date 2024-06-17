@@ -13,6 +13,10 @@ RSpec.describe Admin::ProductsController, type: :controller do
       it 'populates an array of all products' do
         expect(assigns(:products)).to match_array(products)
       end
+      it 'populates only 12 elemnts of products (pagy)' do
+        create_list(:product, 24)
+        expect(assigns(:products).size).to eq 12
+      end
       it 'render index view' do
         expect(response).to render_template :index
       end

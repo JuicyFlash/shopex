@@ -2,11 +2,15 @@ require 'rails_helper'
 
 RSpec.describe ProductsController, type: :controller do
   describe 'GET #index' do
-    let(:products) { create_list(:product, 5) }
+    let(:products) { create_list(:product, 6) }
     before { get :index }
 
     it 'populates an array of all products' do
       expect(assigns(:products)).to match_array(products)
+    end
+    it 'populates only 6 elemnts of products (pagy)' do
+      create_list(:product, 12)
+      expect(assigns(:products).size).to eq 6
     end
     it 'render index view' do
       expect(response).to render_template :index

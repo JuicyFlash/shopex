@@ -5,7 +5,8 @@ class Admin::ProductsController < Admin::BaseController
   before_action :load_brands, only: %i[edit new create update]
   before_action :load_properties, only: %i[edit new create update]
   def index
-    @products = Product.all
+    query = Product.all
+    @pagy, @products = pagy(query, items: 12)
   end
 
   def show; end

@@ -4,12 +4,7 @@ class ProductsController < ApplicationController
 
   def index
     query = Product.with_attached_images.all
-    @pagy, @products = pagy(query, items: 3)
-
-    respond_to do |format|
-      format.html
-      format.turbo_stream
-    end
+    @pagy, @products = pagy(query, items: 6)
   end
 
   def show; end

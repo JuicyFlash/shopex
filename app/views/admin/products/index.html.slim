@@ -27,3 +27,5 @@ div class="container-fluid"
           tbody id="admin-products" 
             - @products.find_each do |product|                            
               = render 'product', product: product
+      .row.justify-content-begin#bot-pagy
+        = render "shared/pagy_navigation", pagy: @pagy, nav_path_helper: :admin_products_path
