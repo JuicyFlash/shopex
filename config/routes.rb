@@ -25,6 +25,8 @@ Rails.application.routes.draw do
       patch :purge_image, on: :member
     end
 
+    resources :users, only: %i[index]
+
     resources :properties
   end
 end

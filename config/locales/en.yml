@@ -89,6 +89,7 @@ en:
       sidebar:
         products: "Products"
         properties: "Properties"
+        users: "Users"
     properties:
       create:
         sucessful_created: "Property succesful created"
@@ -136,3 +137,8 @@ en:
         price: "Price"
         brand: "Brand"
         add_product: "Add product"
+    users:
+      index:
+        title: "Users"
+        email: "Email"
+        admin: "Admin"

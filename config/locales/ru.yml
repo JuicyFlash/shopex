@@ -73,6 +73,7 @@ ru:
       sidebar:
         products: "Товары"
         properties: "Свойства"
+        users: "Пользователи"
     properties:
       create:
         sucessful_created: "Свойство успешно создано"
@@ -120,3 +121,8 @@ ru:
         price: "Цена"
         brand: "Бренд"
         add_product: "Добавить товар"
+    users:
+      index:
+        title: "Пользователи"
+        email: "Email"
+        admin: "Администратор"
