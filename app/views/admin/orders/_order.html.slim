@@ -1,0 +1,14 @@
+tr id="admin-order-#{order.id}"
+  td
+    = order.id
+  td
+    = order.author
+  td
+    - if order.user.nil?
+      = t('.unknown_email')
+    - else 
+      = order.user.email
+  td
+    = order.total
+  td
+    = order.created_at

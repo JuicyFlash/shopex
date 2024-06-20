@@ -74,6 +74,16 @@ ru:
         products: "Товары"
         properties: "Свойства"
         users: "Пользователи"
+        orders: "Заказы"
+    orders:
+      index:
+        title: "Заказы"
+        email: "Email"
+        total: "Всего"
+        created: "Создан"
+        author: "Заказчик"
+      order:
+        unknown_email: ""
     properties:
       create:
         sucessful_created: "Свойство успешно создано"

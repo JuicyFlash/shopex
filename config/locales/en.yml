@@ -90,6 +90,16 @@ en:
         products: "Products"
         properties: "Properties"
         users: "Users"
+        orders: "Orders"
+    orders:
+      index:
+        title: "Orders"
+        email: "User"
+        total: "Total"
+        author: "Buyer"
+        created: "Created at"
+      order:
+        unknown_email: ""
     properties:
       create:
         sucessful_created: "Property succesful created"

@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
     resources :users, only: %i[index]
 
+    resources :orders, only: %i[index]
+
     resources :properties
   end
 end

@@ -15,4 +15,8 @@ class Order < ApplicationRecord
     end
     res
   end
+
+  def author
+    "#{detail.first_name} #{detail.last_name}"
+  end
 end
