@@ -14,4 +14,8 @@ class Product < ApplicationRecord
   def property_value?(value)
     !product_property.find_by(property_value_id: value.id).nil?
   end
+
+  def name
+    "#{brand.title} #{title}"
+  end
 end

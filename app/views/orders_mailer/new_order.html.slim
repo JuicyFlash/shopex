@@ -1,0 +1,18 @@
+.title
+  = link_to t('.header'), admin_orders_url, target: "_blank"
+table
+  tr
+    th
+      = t('.name')
+    th
+      = t('.quantity')
+    th
+      = t('.price')
+  - @order.order_products.find_each do |order_product|
+    tr
+      td 
+        = order_product.product.name
+      td 
+        = order_product.quantity
+      td 
+        = order_product.quantity * order_product.price

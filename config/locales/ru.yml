@@ -136,3 +136,10 @@ ru:
         title: "Пользователи"
         email: "Email"
         admin: "Администратор"
+  orders_mailer:
+    subject: "Создан новый заказ"
+    new_order:
+      header: "Создан новый заказ"
+      name: "Товар"
+      quantity: "Количество"
+      price: "Стоимость"

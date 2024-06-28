@@ -8,6 +8,8 @@ class Order < ApplicationRecord
 
   accepts_nested_attributes_for :detail
 
+  after_create :new_order_notify
+
   def total
     res = 0
     order_products.find_each do |order_product|
@@ -18,5 +20,11 @@ class Order < ApplicationRecord
 
   def author
     "#{detail.first_name} #{detail.last_name}"
+  end
+
+  private
+
+  def new_order_notify
+    OrderNotifyJob.perform_later(self)
   end
 end
