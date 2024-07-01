@@ -20,5 +20,7 @@ div class="container-fluid"
               th scope="col"
                 = t('.created')         
           tbody id="admin-orders" 
-            - @orders.find_each do |order|                            
+            - @orders.find_each(order: :desc) do |order|                            
               = render 'order', order: order
+      .row.justify-content-begin#bot-pagy
+        = render "shared/pagy_navigation", pagy: @pagy, nav_path_helper: :admin_orders_path
