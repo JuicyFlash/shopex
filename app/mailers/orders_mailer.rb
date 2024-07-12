@@ -5,7 +5,7 @@ class OrdersMailer < ApplicationMailer
   end
 
   def new_order_telegram(user, order)
-    api_key = Rails.application.credentials[:telegram][:api_key] # '7046968328:AAE1haYh1kkkJEl2PnqNi_OJZ0j71N40xTQ' #
+    api_key = Rails.application.credentials[:telegram][:api_key]
     chat_id = user
     url = URI(admin_orders_url)
     text = "[Оформлен заказ №#{order.id}](#{admin_orders_url(subdomain: url.host.include?('www.') ? '' : 'www')})"
