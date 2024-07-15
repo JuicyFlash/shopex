@@ -8,7 +8,7 @@ class Order < ApplicationRecord
 
   accepts_nested_attributes_for :detail
 
-  after_create :new_order_notify
+  after_create :new_order_email_notify, :new_order_telegram_notify
 
   def total
     res = 0
@@ -24,7 +24,11 @@ class Order < ApplicationRecord
 
   private
 
-  def new_order_notify
-    OrderNotifyJob.perform_later(self)
+  def new_order_email_notify
+    OrderEmailNotifyJob.perform_later(self)
+  end
+
+  def new_order_telegram_notify
+    OrderTelegramNotifyJob.perform_later(self)
   end
 end

@@ -24,8 +24,12 @@ RSpec.describe Order, type: :model do
     describe 'notify service' do
       let(:notify_order) { build(:order) }
 
-      it 'calls OrderNotifyJob#perform_later' do
-        expect(OrderNotifyJob).to receive(:perform_later).with(notify_order)
+      it 'calls OrderEmailNotifyJob#perform_later' do
+        expect(OrderEmailNotifyJob).to receive(:perform_later).with(notify_order)
+        notify_order.save
+      end
+      it 'calls OrderTelegramNotifyJob#perform_later' do
+        expect(OrderTelegramNotifyJob).to receive(:perform_later).with(notify_order)
         notify_order.save
       end
     end
