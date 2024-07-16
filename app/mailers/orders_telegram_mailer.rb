@@ -21,15 +21,14 @@ class OrdersTelegramMailer < ApplicationMailer
   end
 
   def tg_config
-    api_key = Rails.application.credentials[:telegram][:api_key]
-    @tg_config ||= { api_key:,
+    @tg_config ||= { api_key: TELEGRAM[:api_key],
                      chat_id: @user,
                      parse_mode: 'MarkdownV2',
-                     api_url: "#{TELEGRAM[:api_path]}#{api_key}/sendMessage" }
+                     api_url: "#{TELEGRAM[:api_path]}#{TELEGRAM[:api_key]}/sendMessage" }
   end
 
   def make_message
-    text = "[Оформлен заказ №#{@order.id}](#{orders_url})"
+    text = "[#{I18n.t('orders_telegram_mailer.subject')} №#{@order.id}](#{orders_url})"
     @order.order_products.find_each do |order_product|
       text = "#{text}  \n#{order_product.product.title} #{order_product.quantity}"
     end

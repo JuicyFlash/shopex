@@ -159,3 +159,5 @@ en:
       name: "Product"
       quantity: "Quantity"
       price: "Total price"
+  orders_telegram_mailer:
+    subject: "New order was created"

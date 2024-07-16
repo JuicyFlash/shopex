@@ -143,3 +143,5 @@ ru:
       name: "Товар"
       quantity: "Количество"
       price: "Стоимость"
+  orders_telegram_mailer:
+    subject: "Создан новый заказ"
