@@ -12,4 +12,7 @@ module ApplicationHelper
   def nav_cart_products(cart)
     "#{t('helpers.nav_cart_products')}: #{cart.products_count}"
   end
+  def current_params
+    @current_params || {}
+  end
 end

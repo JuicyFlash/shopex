@@ -75,8 +75,10 @@ ru:
         properties: "Свойства"
         users: "Пользователи"
         orders: "Заказы"
+      search:
+        search: "Искать"
     orders:
-      index:
+      admin_orders_page:
         title: "Заказы"
         email: "Email"
         total: "Всего"
@@ -125,8 +127,9 @@ ru:
         cancell: "Закрыть"
         new_image: "Новые файлы"
         images: "Файлы"
-      index:
-        title: "Название"
+      admin_products_page:
+        title: "Товары"
+        name: "Товар"
         description: "Описание"
         price: "Цена"
         brand: "Бренд"

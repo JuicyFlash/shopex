@@ -34,4 +34,10 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+/config/database.yml
+
 /db/seeds/*
+/dump.rdb
+
+config/*.sphinx.conf
+db/sphinx

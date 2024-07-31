@@ -1,0 +1,30 @@
+div class="container-fluid"
+  div class="row"
+    = render 'admin/shared/sidebar'
+    main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"
+      div class="d-flex justify-content-left flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+        h1 class="disabled-link-decoration"
+          = link_to t('.title'), admin_products_path
+        = render "admin/shared/search", search_path: admin_products_search_path, query: query
+      = link_to t('.add_product'), new_admin_product_path, data: { turbo_stream: true }
+      div.my-3#new-product-form
+        - if @product
+          = render 'admin/products/form', product: @product, brands: @brands, properties: @properties, action: :create
+      div class="table-responsive small"
+        table class="table table-hover table-sm"
+          thead
+            tr
+              th
+              th scope="col"
+                = 'id'
+              th scope="col"
+                = t('.brand')
+              th scope="col"
+                = t('.name')
+              th scope="col"
+                = t('.description')
+              th scope="col"
+                = t('.price')
+          = render 'admin/products/products', products: @products
+      .row.justify-content-begin#bot-pagy
+        = render "shared/pagy_navigation", pagy: @pagy, nav_path_pagy: nav_path_pagy, query: query

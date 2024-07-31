@@ -4,10 +4,10 @@
 .container-lg.my-5
 
   .row.justify-content-begin#top-pagy
-    = render "shared/pagy_navigation", pagy: @pagy, nav_path_helper: :products_path    
+    = render "shared/pagy_navigation", pagy: @pagy, nav_path_pagy: :products_path, query: nil
 
   .row.justify-content-around#products    
     = render 'products', products: @products
 
   .row.justify-content-begin#bot-pagy
-    = render "shared/pagy_navigation", pagy: @pagy, nav_path_helper: :products_path
+    = render "shared/pagy_navigation", pagy: @pagy, nav_path_pagy: :products_path, query: nil
