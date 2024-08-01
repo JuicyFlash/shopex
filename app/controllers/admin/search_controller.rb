@@ -6,7 +6,7 @@ class Admin::SearchController < Admin::BaseController
     @query = params[:query]
     ids = Product.search(@query)
     query = Product.where(:id => ids)
-    @pagy, @products = pagy(query, items: 2)
+    @pagy, @products = pagy(query, items: 10)
     @current_params = { query: @query,
                         page: @pagy.page }
   end
@@ -15,7 +15,7 @@ class Admin::SearchController < Admin::BaseController
     @query = params[:query]
     ids = Order.search(@query)
     query = Order.where(:id => ids)
-    @pagy, @orders = pagy(query, items: 2)
+    @pagy, @orders = pagy(query, items: 10)
     @current_params = { query: @query,
                         page: @pagy.page }
   end

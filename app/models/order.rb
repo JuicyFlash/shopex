@@ -22,6 +22,10 @@ class Order < ApplicationRecord
     "#{detail.first_name} #{detail.last_name}"
   end
 
+  def delivery_adress
+    "#{detail.city} #{detail.street} #{detail.house_number}"
+  end
+
   private
 
   def new_order_email_notify

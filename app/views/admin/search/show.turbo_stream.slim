@@ -1,5 +1,0 @@
-/- unless @search_result.nil?
-= turbo_stream.replace('admin-products', partial: 'admin/products/products', locals: { products: @search_result })
-= turbo_stream.append('flash-messages', partial: 'shared/flash')
-= turbo_stream.replace('bot-pagy', partial: 'shared/pagy_navigation', locals: { pagy: @pagy, nav_path_pagy: :admin_search_path})
-/- else

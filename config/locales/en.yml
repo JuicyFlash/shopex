@@ -100,7 +100,16 @@ en:
         total: "Total"
         author: "Buyer"
         created: "Created at"
+        adress: "Adress"
+        phone: "Phone"
+      order_details:
+        product: "Product"
+        price: "Price"
+        quantity: "Quantity"
+        total_price: "Total price"
       order:
+        details: "Details"
+        dismiss: "Close"
         unknown_email: ""
     properties:
       create:

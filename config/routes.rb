@@ -26,19 +26,19 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'products#index'
 
+    get 'products/search' => 'search#products_show'
+    get 'orders/search' => 'search#orders_show'
+
     resources :products, only: %i[create index update edit new] do
       patch :purge_image, on: :member
     end
 
     resources :users, only: %i[index]
 
-    resources :orders, only: %i[index]
+    resources :orders, only: %i[index show]do
+      patch :dismiss_details
+    end
 
     resources :properties
-
-    get 'products/search' => 'search#products_show'
-    get 'orders/search' => 'search#orders_show'
-
-    get :search, to: "search#show"
   end
 end

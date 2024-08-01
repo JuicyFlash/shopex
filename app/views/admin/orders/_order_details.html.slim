@@ -1,0 +1,23 @@
+tr id="admin-order-#{order.id}-details"
+  - if action == :show
+    td colspan="7" id="admin-order-#{order.id}-products"
+      table class="table table-bordered border-dark"
+        tr class="table table-secondary"
+          th scope="col"
+            = t('.product')
+          th scope="col"
+            = t('.price')
+          th scope="col"
+            = t('.quantity')
+          th scope="col"
+            = t('.total_price')
+        - order.order_products.find_each do |order_product|
+          tr.order-product
+            td
+              = order_product.product.title
+            td
+              = format_price(order_product.price)
+            td
+              = order_product.quantity
+            td
+              = format_price(order_product.total_price)

@@ -84,7 +84,16 @@ ru:
         total: "Всего"
         created: "Создан"
         author: "Заказчик"
+        adress: "Адрес"
+        phone: "Телефон"
+      order_details:
+        product: "Товар"
+        price: "Цена"
+        quantity: "Кол-во"
+        total_price: "Стоимость"
       order:
+        details: "Детали"
+        dismiss: "Скрыть"
         unknown_email: ""
     properties:
       create:
