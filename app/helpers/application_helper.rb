@@ -15,4 +15,9 @@ module ApplicationHelper
   def current_params
     @current_params || {}
   end
+
+  def current_params_brands
+    current_params[:brands] || []
+  end
+
 end

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'products#index'
 
+  get 'products/search' => 'search#products_show'
+
   resources :products, only: %i[index show]
 
   resources :orders, only: %i[create index]
@@ -27,6 +29,7 @@ Rails.application.routes.draw do
     root 'products#index'
 
     get 'products/search' => 'search#products_show'
+
     get 'orders/search' => 'search#orders_show'
 
     resources :products, only: %i[create index update edit new] do

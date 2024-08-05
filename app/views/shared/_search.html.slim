@@ -1,0 +1,6 @@
+div class="mx-3"
+  = form_with  url: search_path, method: :get, data: {turbo: false} do |f|
+    div class="d-flex mx-3 my-3 px-3"
+      =f.hidden_field :lang, value: I18n.locale
+      = f.text_field :query, class: "form-control form-control-sm", value: current_params[:query]
+      = f.submit t('.search'), class: "btn btn-dark btn-sm mx-2"

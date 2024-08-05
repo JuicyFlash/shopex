@@ -1,0 +1,11 @@
+div class="sidebar col-md-3 col-lg-2 p-0" id="products-side-bar"
+  div class="offcanvas-md offcanvas-end" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel"
+    div class="offcanvas-header"
+    div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3"
+      .row.justify-content-center
+        - @brands.find_each do |brand|
+          .col-8.my-1
+            - if current_params_brands.include?(brand.id.to_s)
+              = link_to brand.title, products_path({brands: current_params_brands - [brand.id.to_s]}), type: "button", class: "btn active", data: { turbo_stream: true }
+            - else
+              = link_to brand.title, products_path({brands: current_params_brands + [brand.id]}), type: "button", class: "btn", data: { turbo_stream: true }

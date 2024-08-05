@@ -1,1 +1,4 @@
-= render products
+.row.justify-content-around#products
+  = render products
+  .row.justify-content-begin#bot-pagy
+    = render "shared/pagy_navigation", pagy: @pagy, nav_path_pagy: nav_path_pagy

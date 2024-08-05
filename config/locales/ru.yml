@@ -8,6 +8,8 @@ ru:
       admin_panel_title: "Панель администратора"
     top_header:
       modal_header: "Вход"
+    search:
+      search: "Искать"
   carts:
     put_product:
       put_product_note: "Товар добавлен в корзину!"

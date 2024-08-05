@@ -1,10 +1,9 @@
 ul class="pagination pagination-sm"
-  - if pagy.present? 
+  - if pagy.present? && pagy.series.length > 1
     - pagy.series.each do |page|
       - if pagy.page.to_s == page 
         li class="page-item" aria-current="page"          
           span class="btn btn-dark mx-1" = page
       - else
           li class="page-item"
-            = link_to "#{page}", query.nil? ? send(nav_path_pagy, {page: page}) :  send(nav_path_pagy, {query: query, page: page}), class: "btn btn-sm btn-outline-dark"
- 
+            = link_to "#{page}", send(nav_path_pagy, current_params.merge(page: page)), class: "btn btn-sm btn-outline-dark"
