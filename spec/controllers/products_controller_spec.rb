@@ -8,9 +8,9 @@ RSpec.describe ProductsController, type: :controller do
     it 'populates an array of all products' do
       expect(assigns(:products)).to match_array(products)
     end
-    it 'populates only 6 elemnts of products (pagy)' do
+    it 'populates only 9 elemnts of products (pagy)' do
       create_list(:product, 12)
-      expect(assigns(:products).size).to eq 6
+      expect(assigns(:products).size).to eq 9
     end
     it 'render index view' do
       expect(response).to render_template :index

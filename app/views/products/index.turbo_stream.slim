@@ -1,2 +1,2 @@
 = turbo_stream.replace("products", partial: 'products/products', locals: { products: @products, pagy: @pagy, nav_path_pagy: :products_path} )
-= turbo_stream.replace("products-side-bar", partial: 'products/side_bar', locals: { brands: @brands, current_params_brands:  @current_params[:brands] } )
+= turbo_stream.replace("products-side-bar", partial: 'products/side_bar', locals: { brands: @brands, nav_path_filters: :products_path } )

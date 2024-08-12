@@ -1,8 +1,8 @@
 .container
   div class="row col-md-12"
     = render 'shared/logo'
-    = render 'products/side_bar'
+    = render 'products/side_bar', nav_path_filters: nav_path
     main class="col-md-9 ms-sm-auto col-lg-10"
       .container-lg.my-5
         = render "shared/search", search_path: products_search_path
-        = render 'products/products', products: @products, nav_path_pagy: nav_path_pagy
+        = render 'products/products', products: @products, nav_path_pagy: nav_path
