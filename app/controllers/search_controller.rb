@@ -2,25 +2,26 @@
 
 class SearchController < ApplicationController
   before_action :find_cart, only: %i[products_show]
+  before_action :current_params, only: %i[products_show]
 
   def products_show
     @brands = Brand.all
     @properties = Property.with_values
-    search_query = search_params[:query]
-    filtered_brands = search_params[:brands] || []
-    properties = search_params[:properties].to_h || {}
-    properties_values = []
-    properties.values.map{ |v| v }.each { |i| properties_values.concat(i) } || []
+    @pagy, @products = pagy(SearchService.search_products_with_params(@current_params), items: 9)
 
-    ids =  Product.search search_query, :with=> {:brand_id => filtered_brands}, :with_all => {:value_ids => properties_values.map{|v| v.to_i}}
-    query = Product.where(:id => ids)
-    @pagy, @products = pagy(query, items: 9)
-    @current_params = { query: search_query,
-                        brands: filtered_brands,
-                        properties: properties }
+    respond_to do |format|
+      format.turbo_stream
+      format.html { render 'products_show' }
+    end
   end
 
   private
+
+  def current_params
+    @current_params = { query: search_params[:query],
+                        brands: search_params[:brands] || [],
+                        properties: search_params[:properties].to_h || {} }
+  end
 
   def search_params
     params.permit(:query, :page, brands: [], properties: {})

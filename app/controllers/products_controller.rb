@@ -1,18 +1,15 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: %i[show]
   before_action :find_cart, only: %i[index show]
+  before_action :current_params, only: %i[index]
 
   def index
     @brands = Brand.all
     @properties = Property.with_values
-    @current_params = { brands:  products_params[:brands] || [],
-                        properties:  products_params[:properties].to_h || {} }
-    /ids =  Product.search :with=> {:brand_id => @filtered_brands}, :with_all => {:value_ids => properties_values.map{|v| v.to_i}}/
-    query = Product.with_attached_images.get_products_by_params(@current_params)
-    @pagy, @products = pagy(query, items: 9)
+    @pagy, @products = pagy(SearchService.get_products_by_params(@current_params), items: 9)
 
     respond_to do |format|
-      format.turbo_stream {  }
+      format.turbo_stream
       format.html { render 'index' }
     end
   end
@@ -20,6 +17,11 @@ class ProductsController < ApplicationController
   def show; end
 
   private
+
+  def current_params
+    @current_params = { brands: products_params[:brands] || [],
+                        properties: products_params[:properties].to_h || {} }
+  end
 
   def products_params
     params.permit(brands: [], properties: {})
