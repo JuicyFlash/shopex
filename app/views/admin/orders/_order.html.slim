@@ -1,14 +1,33 @@
-tr id="admin-order-#{order.id}"
+tr id="admin-order-#{order.id}" class="#{action == :show ? 'table-primary' : ''}"
+  td
+    - if action == :show
+      = button_to t('.dismiss'),
+              admin_order_dismiss_details_path(order),
+              method: :patch,
+              data: { turbo_stream: true },
+              class:"btn btn-dark btn-sm"
+
+    - else
+      = button_to t('.details'),
+              admin_order_path(order),
+              method: :get,
+              data: { turbo_stream: true },
+              class: "btn btn-outline-dark btn-sm"
   td
     = order.id
   td
     = order.author
+    td
+      = order.detail.phone_number
   td
     - if order.user.nil?
       = t('.unknown_email')
-    - else 
+    - else
       = order.user.email
   td
     = order.total
   td
+     = order.delivery_adress
+  td
     = order.created_at
+= render 'admin/orders/order_details', order: order, action: action

@@ -1,0 +1,32 @@
+div class="container-fluid"
+  div class="row"
+    = render 'admin/shared/sidebar'
+    main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"
+      div class="d-flex justify-content-left flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+        h1 class="disabled-link-decoration"
+          = link_to t('.title'), admin_orders_path
+        = render "admin/shared/search", search_path: admin_orders_search_path, query: query
+      div class="table-responsive small"
+        table class="table table-hover table-sm"
+          thead
+            tr class="table-dark"
+              th scope="col"
+              th scope="col"
+                = 'id'
+              th scope="col"
+                = t('.author')
+              th scope="col"
+                = t('.phone')
+              th scope="col"
+                = t('.email')
+              th scope="col"
+                = t('.total')
+              th scope="col"
+                = t('.adress')
+              th scope="col"
+                = t('.created')
+          tbody id="admin-orders"
+            - @orders.find_each(order: :desc) do |order|
+              = render 'admin/orders/order', order: order, action: :index
+      .row.justify-content-begin#bot-pagy
+        = render "shared/pagy_navigation", pagy: @pagy, nav_path_pagy: nav_path_pagy, query: query

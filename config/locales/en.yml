@@ -37,6 +37,8 @@ en:
       admin_panel_title: "Admin panel"      
     top_header:
       modal_header: "Login"
+    search:
+      search: "Search"
   carts:
     put_product:
       put_product_note: "Product successfully added to cart!"
@@ -91,14 +93,25 @@ en:
         properties: "Properties"
         users: "Users"
         orders: "Orders"
+      search:
+        search: "Search"
     orders:
-      index:
+      admin_orders_page:
         title: "Orders"
         email: "User"
         total: "Total"
         author: "Buyer"
         created: "Created at"
+        adress: "Adress"
+        phone: "Phone"
+      order_details:
+        product: "Product"
+        price: "Price"
+        quantity: "Quantity"
+        total_price: "Total price"
       order:
+        details: "Details"
+        dismiss: "Close"
         unknown_email: ""
     properties:
       create:
@@ -143,6 +156,7 @@ en:
         images: "Files"
       index:
         title: "Products"
+        name: "Product"
         description: "Description"
         price: "Price"
         brand: "Brand"

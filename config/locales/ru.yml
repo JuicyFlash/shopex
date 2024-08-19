@@ -8,6 +8,8 @@ ru:
       admin_panel_title: "Панель администратора"
     top_header:
       modal_header: "Вход"
+    search:
+      search: "Искать"
   carts:
     put_product:
       put_product_note: "Товар добавлен в корзину!"
@@ -75,14 +77,25 @@ ru:
         properties: "Свойства"
         users: "Пользователи"
         orders: "Заказы"
+      search:
+        search: "Искать"
     orders:
-      index:
+      admin_orders_page:
         title: "Заказы"
         email: "Email"
         total: "Всего"
         created: "Создан"
         author: "Заказчик"
+        adress: "Адрес"
+        phone: "Телефон"
+      order_details:
+        product: "Товар"
+        price: "Цена"
+        quantity: "Кол-во"
+        total_price: "Стоимость"
       order:
+        details: "Детали"
+        dismiss: "Скрыть"
         unknown_email: ""
     properties:
       create:
@@ -125,8 +138,9 @@ ru:
         cancell: "Закрыть"
         new_image: "Новые файлы"
         images: "Файлы"
-      index:
-        title: "Название"
+      admin_products_page:
+        title: "Товары"
+        name: "Товар"
         description: "Описание"
         price: "Цена"
         brand: "Бренд"
