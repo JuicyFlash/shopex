@@ -1,0 +1,27 @@
+div class="sidebar col-md-3 col-lg-2 p-0" id="products-side-bar"
+  div class="offcanvas-md offcanvas-end" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel"
+    div class="offcanvas-header"
+    div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3"
+      .row.justify-content-start
+        .col-10.my-1.border-bottom
+          h6
+            = "Брэнд"
+        - @brands.find_each do |brand|
+          .col-9.mt-1
+            - if current_params_brands.include?(brand.id.to_s)
+              = link_to brand.title, send(nav_path_filters, make_params_for_brand(brand.id)), type: "button", class: "btn active", data: { turbo_stream: true }
+            - else
+              = link_to brand.title, send(nav_path_filters, make_params_for_brand(brand.id)), type: "button", class: "btn", data: { turbo_stream: true }
+        div
+        - @properties.find_each do |property|
+          .row.justify-content-start.my-1.border-top
+            .col-10.my-1
+              h6
+                = property.name
+          .container.justify-content-around
+            - property.property_values.find_each do |property_value|
+              .col-1.mx-2
+              - if current_params_properties_values(property.id.to_s).include?(property_value.id.to_s)
+                = link_to property_value.value, send(nav_path_filters, make_params_for_property(property.id, property_value.id)) , type: "button", class: "btn active", data: { turbo_stream: true }
+              - else
+                = link_to property_value.value, send(nav_path_filters, make_params_for_property(property.id, property_value.id)), type: "button", class: "btn", data: { turbo_stream: true }

@@ -1,0 +1,25 @@
+div class="container-fluid"
+  div class="row"
+    = render 'admin/shared/sidebar'
+    main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"
+      div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+        h1 class="h2"
+          = t('.title')
+      = link_to t('.add_property'), new_admin_property_path, data: { turbo_stream: true }
+      div.my-3#new-property-form
+        - if @property
+          = render 'form', property: @property, action: :create
+      div class="table-responsive small"
+        table class="table table-hover table-sm"
+          thead
+            tr              
+              th                         
+              th scope="col"
+                = 'id'
+              th scope="col"
+                = t('.name')
+              th scope="col"
+                = t('.unique')              
+          tbody id="admin-properties" 
+            - @properties.find_each do |property|                            
+              = render 'property', property: property
