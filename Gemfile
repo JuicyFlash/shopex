@@ -71,8 +71,6 @@ gem 'mysql2'
 
 gem 'thinking-sphinx'
 
-gem 'unicorn'
-
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
@@ -102,7 +100,7 @@ group :development do
   gem 'ed25519', '>= 1.2' , '< 2.0', require: false
   gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0', require: false
   gem 'capistrano-sidekiq', require: false
-  gem 'capistrano3-unicorn', require: false
+  gem "capistrano3-puma", ">=4.0.0", require: false
 end
 
 group :test do

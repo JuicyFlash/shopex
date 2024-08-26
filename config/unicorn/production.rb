@@ -1,3 +1,4 @@
+=begin
 # paths
 app_path = "/home/deployer/shopex"
 working_directory "#{app_path}/current"
@@ -44,4 +45,4 @@ after_fork do |server, worker|
   if defined?(ActiveRecord::Base)
     ActiveRecord::Base.establish_connection
   end
-end
+end=end

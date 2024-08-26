@@ -6,10 +6,13 @@ require "capistrano/deploy"
 require "capistrano/rvm"
 require "capistrano/bundler"
 #require "capistrano/passenger"
-require "capistrano3/unicorn"
+#require "capistrano3/unicorn"
 require "capistrano/rails"
 require "capistrano/sidekiq"
 require "thinking_sphinx/capistrano"
+require 'capistrano/puma'
+install_plugin Capistrano::Puma  # Default puma tasks
+install_plugin Capistrano::Puma::Systemd
 # Load the SCM plugin appropriate to your project:
 #
 # require "capistrano/scm/hg"

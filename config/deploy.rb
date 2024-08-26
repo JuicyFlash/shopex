@@ -13,6 +13,22 @@ set :branch, "staging"
 set :deploy_to, "/home/deployer/shopex"
 set :deploy_user, 'deployer'
 
+# Puma config
+shared_path = "/home/deployer/shopex/shared"
+release_path = "/home/deployer/shopex/current"
+set :puma_threads, [2, 8]
+set :puma_workers, 1
+set :puma_bind, "unix:/#{shared_path}/tmp/sockets/shopex-puma.sock"
+set :puma_state, "#{shared_path}/tmp/pids/puma.state"
+set :puma_pid, "#{shared_path}/tmp/pids/puma.pid"
+set :puma_access_log, "#{release_path}/log/puma.access.log"
+set :puma_error_log, "#{release_path}/log/puma.error.log"
+set :ssh_options, { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
+set :puma_preload_app, true
+set :puma_worker_timeout, nil
+set :puma_init_active_record, true # Change to false when not using ActiveRecord
+
+
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
@@ -44,4 +60,4 @@ set :pty, false
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 
-after 'deploy:publishing', 'unicorn:restart'
+after 'deploy:publishing', 'puma:restart'
