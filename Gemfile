@@ -100,7 +100,8 @@ group :development do
   gem 'ed25519', '>= 1.2' , '< 2.0', require: false
   gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0', require: false
   gem 'capistrano-sidekiq', require: false
-  gem 'capistrano3-unicorn', require: false
+  # gem 'capistrano3-unicorn', require: false
+  gem 'capistrano-passenger', require: false
 end
 
 group :test do
