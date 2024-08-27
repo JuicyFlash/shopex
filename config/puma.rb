@@ -39,7 +39,7 @@ plugin :tmp_restart
 shared_path = "/home/deployer/shopex/shared"
 release_path = "/home/deployer/shopex/current"
 # Set up socket location
-bind "unix://#{shared_path}/tmp/sockets/puma.sock"
+bind "unix://#{shared_path}/tmp/sockets/shopex-puma.sock"
 
 # Logging
 stdout_redirect "#{release_path}/log/puma.stdout.log", "#{release_path}/log/puma.stderr.log", true
