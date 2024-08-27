@@ -11,12 +11,14 @@ set :branch, "staging"
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/deployer/shopex"
-set :deploy_user, 'deployer'
+set :user, 'deployer'
 
 # Puma config
+=begin
 shared_path = "/home/deployer/shopex/shared"
 release_path = "/home/deployer/shopex/current"
-set :puma_threads, [2, 8]
+=end
+set :puma_threads, [4, 16]
 set :puma_workers, 0
 set :puma_bind, "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
 set :puma_state, "#{shared_path}/tmp/pids/puma.state"
@@ -25,7 +27,6 @@ set :puma_access_log, "#{release_path}/log/puma.access.log"
 set :puma_error_log, "#{release_path}/log/puma.error.log"
 set :ssh_options, { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
 set :puma_preload_app, true
-set :puma_enable_socket_service, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true # Change to false when not using ActiveRecord
 namespace :puma do
