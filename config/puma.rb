@@ -23,28 +23,13 @@ end
 worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
-#port ENV.fetch("PORT") { 3000 }
+port ENV.fetch("PORT") { 3000 }
 
 # Specifies the `environment` that Puma will run in.
 environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Specifies the `pidfile` that Puma will use.
-#pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
+pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
 # Allow puma to be restarted by `bin/rails restart` command.
 plugin :tmp_restart
-# `shared_dir` is the symlinked `shared/` directory created
-# by Capistrano - `/home/deploy/my_app/shared`
-
-shared_path = "/home/deployer/shopex/shared"
-release_path = "/home/deployer/shopex/current"
-# Set up socket location
-bind "unix://#{shared_path}/tmp/sockets/shopex-puma.sock"
-
-# Logging
-stdout_redirect "#{release_path}/log/puma.stdout.log", "#{release_path}/log/puma.stderr.log", true
-
-# Set master PID and state locations
-pidfile "#{shared_path}/tmp/pids/puma.pid"
-state_path "#{shared_path}/tmp/pids/puma.state"
-activate_control_app
