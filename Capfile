@@ -3,16 +3,21 @@ require "capistrano/setup"
 
 # Include default deployment tasks
 require "capistrano/deploy"
-require "capistrano/rvm"
+#require "capistrano/rvm"
+require 'capistrano/rbenv'
 require "capistrano/bundler"
-#require "capistrano/passenger"
+require "capistrano/passenger"
 #require "capistrano3/unicorn"
 require "capistrano/rails"
 require "capistrano/sidekiq"
 require "thinking_sphinx/capistrano"
-require 'capistrano/puma'
-install_plugin Capistrano::Puma  # Default puma tasks
-install_plugin Capistrano::Puma::Systemd
+
+set :rbenv_type, :user
+set :rbenv_ruby, '3.3.0'
+
+#require 'capistrano/puma'
+#install_plugin Capistrano::Puma  # Default puma tasks
+#install_plugin Capistrano::Puma::Systemd
 # Load the SCM plugin appropriate to your project:
 #
 # require "capistrano/scm/hg"
