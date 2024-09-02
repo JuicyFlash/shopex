@@ -182,6 +182,10 @@
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+.disabled-link-decoration a{
+  text-decoration: none;
+  color: black;
+}
 
 //.cart-tooltip {
 //  position: relative;

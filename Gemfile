@@ -55,6 +55,22 @@ gem 'devise', github: 'heartcombo/devise', ref: 'f8d1ea90bc3'
 gem 'bootstrap'
 gem 'bootstrap_icons_rails'
 gem 'sassc-rails'
+
+# vanilla-nested
+gem 'vanilla_nested', github: 'arielj/vanilla-nested', branch: :main
+
+# Pagy
+
+gem 'pagy', '~> 8.4'
+
+gem 'sidekiq', '6.5.12'
+
+gem 'httparty'
+
+gem 'mysql2'
+
+gem 'thinking-sphinx'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
@@ -74,6 +90,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'letter_opener'
   gem 'rubocop', require: false
 end
 

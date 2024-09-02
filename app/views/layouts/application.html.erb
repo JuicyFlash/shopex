@@ -6,20 +6,20 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>    
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-
-   <%= render 'shared/top_header' %>
+    
+  <%= render 'shared/top_header' %>
 
   <div class="toast-container position-fixed top-3 end-0 p-3">
     <%= turbo_frame_tag id="flash-messages" do%>
       <%= render 'shared/flash' %>
     <% end %>
-  </div>
-  
+  </div> 
+
   <%= yield %> 
   </body>
 </html>

@@ -1,0 +1,13 @@
+tr id="admin-property-#{property.id}"
+  td
+    d-flex
+      = link_to edit_admin_property_path(property), class: "btn btn-outline-dark btn-sm", data: { turbo_stream: true }
+        i class="bi bi-pencil-square"
+      = link_to admin_property_path(property), class: "btn btn-outline-dark btn-sm mx-2", data: { turbo_method: :delete }
+        i class="bi bi-trash3"
+  td
+    = property.id
+  td
+    = property.name
+  td
+    = property.unique

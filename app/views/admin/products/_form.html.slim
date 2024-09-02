@@ -6,7 +6,7 @@ div class="stimulus" data-controller="products"
           .col-6 
             .field.product-title
               = f.label t('.title')
-              = f.text_field :title, class: "form-control form-control-sm", autofocus: true
+              = f.text_field :title, class: "form-control form-control-sm"
               = render 'shared/record_message', record: product, field: 'title'
           .col-3
             .field.product-brand
@@ -22,6 +22,22 @@ div class="stimulus" data-controller="products"
           = f.label  t('.description')
           = f.text_area :description, class: "form-control form-control-sm"
           = render 'shared/record_message', record: product, field: 'description'
+        .row.justify-content-around        
+          - properties.all.each do |property|
+            .col-md-5.border-bottom.mx-1.my-1
+              .property.my-1 = "#{property.name}"
+              .d-flex.property-values
+                - if property.unique
+                  = f.fields_for :product_property, product.product_property.new do |product_property|
+                    = product_property.hidden_field :property_id, value: property.id 
+                    = product_property.collection_radio_buttons(:property_value_id, property.property_values, :id, :value) do |b|
+                      = b.label(class: "mx-1") { b.radio_button(checked: action == :create ? false : product.property_value?(b.object)) + b.text}
+                - else
+                  - property.property_values.each do |property_value|
+                    = f.fields_for :product_property, product.product_property.new do |product_property|                                       
+                      = product_property.hidden_field :property_id, value: property.id  
+                      = product_property.label :property_value_id, property_value.value, { class:"form-check-label" }
+                      = product_property.check_box :property_value_id, { class: "form-check mx-1", checked: action == :create ? false : product.property_value?(property_value) }, property_value.id , property_value.id*(-1)  
       .col-6 
         .row
           = f.label t('.images')

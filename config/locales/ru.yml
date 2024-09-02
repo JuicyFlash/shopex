@@ -8,6 +8,8 @@ ru:
       admin_panel_title: "Панель администратора"
     top_header:
       modal_header: "Вход"
+    search:
+      search: "Искать"
   carts:
     put_product:
       put_product_note: "Товар добавлен в корзину!"
@@ -72,6 +74,50 @@ ru:
     shared:
       sidebar:
         products: "Товары"
+        properties: "Свойства"
+        users: "Пользователи"
+        orders: "Заказы"
+      search:
+        search: "Искать"
+    orders:
+      admin_orders_page:
+        title: "Заказы"
+        email: "Email"
+        total: "Всего"
+        created: "Создан"
+        author: "Заказчик"
+        adress: "Адрес"
+        phone: "Телефон"
+      order_details:
+        product: "Товар"
+        price: "Цена"
+        quantity: "Кол-во"
+        total_price: "Стоимость"
+      order:
+        details: "Детали"
+        dismiss: "Скрыть"
+        unknown_email: ""
+    properties:
+      create:
+        sucessful_created: "Свойство успешно создано"
+      update:
+        sucessful_updated: "Свойство успешно изменено"
+      destroy:
+        sucessful_deleted: "Свойство успешно удалено"
+      form:
+        name: "Название свойства"
+        unique: "Уникальное"
+        update_property: "Изменить"
+        add_property: "Добавить"
+        add_value: "Добавить новое значение"
+        cancell: "Закрыть"
+      property_value_fields:
+        value: "Значение"
+      index:
+        title: "Свойства"
+        name: "Название"
+        unique: "Уникальное"
+        add_property: "Добавить свойство"
     products:
       create:
         sucessful_created: "Товар успешно создан"
@@ -92,9 +138,24 @@ ru:
         cancell: "Закрыть"
         new_image: "Новые файлы"
         images: "Файлы"
-      index:
-        title: "Название"
+      admin_products_page:
+        title: "Товары"
+        name: "Товар"
         description: "Описание"
         price: "Цена"
         brand: "Бренд"
         add_product: "Добавить товар"
+    users:
+      index:
+        title: "Пользователи"
+        email: "Email"
+        admin: "Администратор"
+  orders_mailer:
+    subject: "Создан новый заказ"
+    new_order:
+      header: "Создан новый заказ"
+      name: "Товар"
+      quantity: "Количество"
+      price: "Стоимость"
+  orders_telegram_mailer:
+    subject: "Создан новый заказ"

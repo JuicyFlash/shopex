@@ -1,6 +1,3 @@
 / .container-lg.text-center
 /   = render 'shared/banner'
-= render 'shared/logo'
-.container-lg.my-5
-  .row.justify-content-around
-    = render @products
+= render 'products_page',  nav_path: :products_path

@@ -13,14 +13,47 @@ def destroy_data
   OrderDetail.destroy_all
   Cart.destroy_all
   Order.destroy_all
-  Brand.destroy_all
+  ProductProperty.destroy_all
+  PropertyValue.destroy_all
+  Property.destroy_all
   Product.destroy_all
+  Brand.destroy_all
   ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
   FileUtils.rm_rf("#{Rails.root}/storage/")
 end
 
 def load_data
   destroy_data
+  @properties = [
+    { name: 'Для кого' },
+    { name: 'Материал корпуса' },
+    { name: 'Материал ремешка' },
+    { name: 'Водонепроницаемость',
+      unique: true },
+    { name: 'Для шейхов',
+      unique: true }
+  ]
+  @property_values = [
+    { property: 'Для кого',
+      value: 'Мужчина' },
+    { property: 'Для кого',
+      value: 'Женщина' },
+    { property: 'Материал корпуса',
+      value: 'Сталь' },
+    { property: 'Материал корпуса',
+      value: 'Золото' },
+    { property: 'Материал корпуса',
+      value: 'Платина' },
+    { property: 'Водонепроницаемость',
+      value: 'Да' },
+    { property: 'Водонепроницаемость',
+      value: 'Нет' },
+    { property: 'Для шейхов',
+      value: 'Нет' },
+    { property: 'Для шейхов',
+      value: 'Да' }
+  ]
+
   @brands = [
     { title: 'Rolex' },
     { title: 'Patek Philippe' },
@@ -92,11 +125,25 @@ def load_data
       images: ['ville_hour.webp'] }
   ]
   load_brands
+  load_properies
+  load_properies_values
   load_products
 end
 
+def load_properies
+  @properties.each do |property|
+    Property.new(property).save
+  end
+end
+
+def load_properies_values
+  @property_values.each do |property_value|
+    @property = Property.find_by(name: property_value[:property])
+    @property.property_values.create(value: property_value[:value])
+  end
+end
+
 def load_brands
-  Brand.delete_all
   @brands.each do |brand|
     Brand.new(brand).save
   end

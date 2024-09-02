@@ -7,7 +7,7 @@ feature 'User can sign in' do
 
   background { visit new_user_session_path }
 
-  scenario 'Registered user tries to sign in', js: true do
+  scenario 'Registered user tries to sign in' do
     within '.email-field' do
       fill_in 'user_email', with: user.email
     end

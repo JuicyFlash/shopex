@@ -1,0 +1,4 @@
+= product_form.fields_for :product_property, product.product_property do |property|
+  .row.my-3
+    = property.label 'Property name', class: "label", for: "order-name"
+    = property.collection_select :property_id, properties, :id, :title,{} ,{class: "form-select form-select-sm"}
