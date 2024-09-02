@@ -11,7 +11,8 @@ set :repo_url, "git@github.com:JuicyFlash/shopex.git"
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/deployer/shopex"
 set :user, 'deployer'
-set :rbenv_prefix, '/usr/bin/rbenv exec'
+
+#set :rbenv_prefix, '/usr/bin/rbenv exec'
 
 # Puma config
 =begin
