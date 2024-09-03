@@ -59,7 +59,7 @@ append :linked_files, "config/database.yml", 'config/master.key'
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "vendor", "storage"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "vendor/javascript", "tmp/sockets", "public/system", "vendor", "storage", "db/seeds/watches_images"
 
-#set :pty, false
+set :pty, false
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
