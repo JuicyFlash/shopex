@@ -20,7 +20,7 @@ registry:
 
 # Inject ENV variables into containers (secrets come from .env).
 # Remember to run `kamal env push` after making changes!
-#env:
+env:
 #  clear:
 #    RAILS_SERVE_STATIC_FILES: true
 #    POSTGRES_USER: "postgres"
