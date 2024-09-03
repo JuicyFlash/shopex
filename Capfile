@@ -9,7 +9,7 @@ require "capistrano/passenger"
 #require "capistrano3/unicorn"
 #require 'capistrano/puma'
 require "capistrano/rails"
-#require "capistrano/sidekiq"
+require "capistrano/sidekiq"
 require "thinking_sphinx/capistrano"
 
 =begin
@@ -29,10 +29,9 @@ install_plugin Capistrano::Puma::Systemd
 require "capistrano/scm/git"
 install_plugin Capistrano::SCM::Git
 
-=begin
+
 install_plugin Capistrano::Sidekiq
 install_plugin Capistrano::Sidekiq::Systemd
-=end
 
 # Include tasks from other gems included in your Gemfile
 #
