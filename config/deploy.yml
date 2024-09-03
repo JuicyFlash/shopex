@@ -20,12 +20,12 @@ registry:
 
 # Inject ENV variables into containers (secrets come from .env).
 # Remember to run `kamal env push` after making changes!
-env:
-  clear:
-    RAILS_SERVE_STATIC_FILES: true
-    POSTGRES_USER: "postgres"
-    POSTGRES_DB: "shopex_production"
-    POSTGRES_HOST: "95.163.228.91" # With the pattern: <service_name>-<accessory_name>
+#env:
+#  clear:
+#    RAILS_SERVE_STATIC_FILES: true
+#    POSTGRES_USER: "postgres"
+#    POSTGRES_DB: "shopex_production"
+#    POSTGRES_HOST: "95.163.228.91" # With the pattern: <service_name>-<accessory_name>
 #   clear:
 #     DB_HOST: 192.168.0.2
   secret:
