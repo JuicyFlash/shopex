@@ -1,3 +1,4 @@
+=begin
 # Set up socket location
 shared_path = "/home/deployer/shopex/shared"
 release_path = "/home/deployer/shopex/current"
@@ -11,4 +12,4 @@ stdout_redirect "#{release_path}/log/pumapd.stdout.log", "#{release_path}/log/pu
 pidfile "#{shared_path}/tmp/pids/puma.pid"
 state_path "#{shared_path}/tmp/pids/puma.state"
 
-activate_control_app
+activate_control_app=end
