@@ -39,6 +39,8 @@ en:
       modal_header: "Login"
     search:
       search: "Search"
+    logo:
+      catalog: "Catalog"
   carts:
     put_product:
       put_product_note: "Product successfully added to cart!"
@@ -175,3 +177,8 @@ en:
       price: "Total price"
   orders_telegram_mailer:
     subject: "New order was created"
+  main:
+    index:
+      best_offer: "Best offer"
+      top_sales: "Top sales"
+      best_estimate: "Best estimate"

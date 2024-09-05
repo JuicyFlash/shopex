@@ -17,6 +17,8 @@
           - if current_user && current_user.admin?
             li.px-2
               = link_to t('.admin_panel_title'), admin_root_path, class: "nav-link"
+          li
+            = link_to "Каталог товаров", products_path, class: "nav-link"
       .d-flex
         - if user_signed_in?
           = button_to t('user_sessions.logout'), destroy_user_session_path, class: "button btn btn-outline-light rounded-5 mx-3", method: :delete, data: { turbo: false }

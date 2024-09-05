@@ -3,6 +3,10 @@
   text-align: center;
   padding: 0px 0 5px 0px;
   border-bottom: 1px solid #DEDEDE;
+
+}
+.logo a{
+  text-decoration:none;
 }
 .logo a h1 {
   font-size: 32px;
@@ -12,8 +16,23 @@
   text-transform: uppercase;
   display: inline-block;
 }
-.logo a:hover{
-  text-decoration:none;
+.logo a h6 {
+  color: #000000;
+  margin: 0;
+  font-family: 'Lora-Regular';
+  text-transform: uppercase;
+}
+.logo h5 {
+  color: #000000;
+  margin: 0;
+  font-family: 'Lora-Regular';
+  text-transform: uppercase;
+}
+.logo h6 {
+  color: #000000;
+  margin: 0;
+  font-family: 'Lora-Regular';
+  text-transform: uppercase;
 }
 /*--end-logo--*/
 /*--nav-drop-down--*/
