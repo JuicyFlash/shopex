@@ -335,11 +335,40 @@ def load_data
         'Для шейхов'  => %w[Нет],
         'Назаначение' => %w[Повседневные]
       }
+    },
+    { brand: 'Tissot',
+      title: 'CHRONO XL CLASSIC',
+      description: 'Tissot Chrono XL — это великолепные часы для тех, кто ищет ультрамодный хронограф со спортивным дизайном, изготовленный по швейцарским технологиям. Этот спортивный кварцевый хронограф с корпусом 45 мм - один из самых крупных в коллекции Tissot.',
+      price: '55000.0',
+      images: %w[tissot-chrono-classic-1.png],
+      properties: {
+        'Материал ремешка' => %w[Сталь],
+        'Для кого' => %w[Мужчина],
+        'Материал корпуса' => %w[Сталь],
+        'Водонепроницаемость' => %w[Да],
+        'Для шейхов'  => %w[Нет],
+        'Назаначение' => %w[Повседневные]
+      }
+    },
+    { brand: 'Tissot',
+      title: 'PR 100 SPORT CHIC CHRONOGRAPH',
+      description: 'Tissot PR 100 ― это классические часы, которые предназначены для повседневной носки и отлично смотрятся в любой ситуации. Модель отличается столь любимым поклонниками коллекции простым элегантным циферблатом и лаконичной эстетикой ― воплощением роскоши, высокого качества исполнения и традиционного стиля.',
+      price: '50000.0',
+      images: %w[tissot-pr100-1.png],
+      properties: {
+        'Материал ремешка' => %w[Сталь],
+        'Для кого' => %w[Женщина],
+        'Материал корпуса' => %w[Сталь],
+        'Водонепроницаемость' => %w[Да],
+        'Для шейхов'  => %w[Нет],
+        'Назаначение' => %w[Повседневные]
+      }
     }
   ]
   load_brands
   load_properties
   load_products
+  load_orders
 end
 
 def load_properties
@@ -375,6 +404,22 @@ def load_products
         value = property.property_values.find_by(value: p_val)
         ProductProperty.create(product_id: @product.id, property_id: property.id, property_value_id: value.id)
       end
+    end
+  end
+end
+def load_orders
+  10.times do
+    order = Order.create
+    OrderDetail.create(order_id: order.id,
+                       first_name: Faker::Name.first_name,
+                       last_name: Faker::Name.last_name,
+                       city: Faker::Address.city,
+                       phone_number: Faker::Base.numerify('+7(###) ### ####'),
+                       street: Faker::Address.street_name,
+                       house_number: Faker::Address.building_number)
+    6.times do
+      product = Product.order("RANDOM()").limit(1).first
+      OrderProduct.create(quantity: 1, price: product.price, order_id: order.id, product_id: product.id)
     end
   end
 end
