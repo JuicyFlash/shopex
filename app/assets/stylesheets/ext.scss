@@ -1,5 +1,4 @@
 .product-card{
-
   border-radius: 10px;
   background: #fafafa;
   margin-bottom: 20px;
@@ -186,7 +185,17 @@
   text-decoration: none;
   color: black;
 }
-
+.banner-products .products-catalog a{
+  color: black;
+}
+.banner-products .banner-product-prev{
+  width: 5%;
+  justify-content: start;
+}
+.banner-products .banner-product-next{
+  width: 5%;
+  justify-content: end;
+}
 //.cart-tooltip {
 //  position: relative;
 //  display: inline-block;
