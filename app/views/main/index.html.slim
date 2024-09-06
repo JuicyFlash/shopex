@@ -1,0 +1,30 @@
+.container
+  div class="row col-md-12"
+    = render 'shared/logo'
+    main class="col-md-9 ms-sm-auto col-lg-10"
+.container-fluid.text-center
+  = render 'shared/banner'
+
+.container
+  div class="container text-center my-4"
+    div class="logo"
+      h5 = t('.best_offer')
+  .row.justify-content-around#recommended-products
+    - unless @recommended_products.nil?
+      = render 'shared/banner_products', products: @recommended_products, carousel_id: "carouselSlidesRecommendedProducts"
+
+.container
+  div class="container text-center my-4"
+    div class="logo"
+      h5 = t('.top_sales')
+  .row.justify-content-around#top-ordered-products
+    - unless @top_ordered_products.nil?
+      = render 'shared/banner_products', products: @top_ordered_products, carousel_id: "carouselSlidesTopOrderedProducts"
+
+.container
+  div class="container text-center my-4"
+    div class="logo"
+      h5 = t('.best_estimate')
+  .row.justify-content-around#top-products
+    - unless @top_products.nil?
+      = render 'shared/banner_products', products: @top_products, carousel_id: "carouselSlidesTopProducts"

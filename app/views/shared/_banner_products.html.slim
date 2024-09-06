@@ -1,0 +1,33 @@
+.banner-products
+  .carousel.slide.carousel-dark id="#{carousel_id}" data-bs-ride="carousel"
+    .carousel-indicators
+      button type="button" data-bs-target="##{carousel_id}" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"
+      button type="button" data-bs-target="##{carousel_id}" data-bs-slide-to="1" aria-label="Slide 2"
+      button type="button" data-bs-target="##{carousel_id}" data-bs-slide-to="2" aria-label="Slide 3"
+    button class="carousel-control-prev banner-product-prev" type="button" data-bs-target="##{carousel_id}" data-bs-slide="prev"
+      span class="carousel-control-prev-icon" aria-hidden="false"
+      span class="visually-hidden"
+        = "Previous"
+    button class="carousel-control-next banner-product-next" type="button" data-bs-target="##{carousel_id}" data-bs-slide="next"
+      span class="carousel-control-next-icon" aria-hidden="false"
+      span class="visually-hidden"
+        = "Next"
+    .carousel-inner
+      - unless products[0..2].nil?
+        .carousel-item.active
+          img.d-block.w-100
+            .row.my-4.justify-content-around
+              = render products[0..2]
+      - unless products[3..5].nil?
+        .carousel-item
+          img.d-block.w-100
+            .row.my-4.justify-content-around
+              = render products[3..5]
+      - unless products[6..8].nil?
+        .carousel-item
+          img.d-block.w-100
+            .row.my-4.justify-content-around
+              = render products[6..8]
+  .row.justify-content-end
+    .col-2.products-catalog
+      = link_to "Перейти в каталог", products_path

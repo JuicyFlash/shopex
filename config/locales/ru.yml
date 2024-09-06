@@ -10,6 +10,8 @@ ru:
       modal_header: "Вход"
     search:
       search: "Искать"
+    logo:
+      catalog: "Каталог"
   carts:
     put_product:
       put_product_note: "Товар добавлен в корзину!"
@@ -159,3 +161,8 @@ ru:
       price: "Стоимость"
   orders_telegram_mailer:
     subject: "Создан новый заказ"
+  main:
+    index:
+      best_offer: "Лучшее предложение"
+      top_sales: "Топ продаж"
+      best_estimate: "Лучшие оценки"

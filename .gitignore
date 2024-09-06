@@ -41,3 +41,5 @@
 
 config/*.sphinx.conf
 db/sphinx
+
+/app/assets/images/banners/*
