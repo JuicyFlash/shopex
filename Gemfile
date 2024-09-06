@@ -71,8 +71,6 @@ gem 'mysql2'
 
 gem 'thinking-sphinx'
 
-gem 'faker'
-
 #gem 'unicorn'
 
 group :development, :test do
