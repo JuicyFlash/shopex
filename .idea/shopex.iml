@@ -215,4 +215,9 @@
       <value>file://$MODULE_DIR$/vendor/assets</value>
     </entry>
   </component>
+  <component name="RakeTasksCache">
+    <option name="myRootTask">
+      <RakeTaskImpl id="rake" />
+    </option>
+  </component>
 </module>

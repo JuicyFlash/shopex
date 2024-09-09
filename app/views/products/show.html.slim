@@ -1,3 +1,32 @@
-.product
-  .title = @product.title
-  .description = @product.description
+.container
+  .product
+    .row
+      .col-md-4
+        .carousel.slide.carousel-dark#carouselProduct
+          - if @product.images.attached?
+            .carousel-inner
+              - @product.images.find_each.with_index do |image, index|
+                div class="carousel-item #{index == 0 ?  'active' : ''}"
+                  = image_tag(image.variant(resize_to_limit: [400, 400]), class: "d-block product-picture")
+            - if @product.images.length > 1
+              button class="carousel-control-prev" type="button" data-bs-target="#carouselProduct" data-bs-slide="prev"
+                span class="carousel-control-prev-icon" aria-hidden="true"
+                span class="visually-hidden"
+                  = "Previous"
+              button class="carousel-control-next" type="button" data-bs-target="#carouselProduct" data-bs-slide="next"
+                span class="carousel-control-next-icon" aria-hidden="true"
+                span class="visually-hidden"
+                  = "Next"
+      .col-md-8
+        .title
+          h3 = "#{@product.brand.title} #{@product.title}"
+        - @properties.find_each do |property|
+          .flex-column
+            h5 = property.name
+          - @product_properties.where(property_id: property.id).find_each do |val|
+            .property-value.mx-3
+              = val.property_value.value
+        .price
+          h5.py-2 = "#{t('.price')}: #{format_price(@product.price)}"
+          = link_to  t('.order'), cart_put_product_path(product: {product_id: @product.id, quantity: '1'}), id: "put-cart-product-#{@product.id}", data: { turbo_method: :patch }, class: "btn btn-outline-dark btn-sm"
+    .description.my-4 = @product.description

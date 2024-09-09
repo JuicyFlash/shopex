@@ -182,3 +182,7 @@ en:
       best_offer: "Best offer"
       top_sales: "Top sales"
       best_estimate: "Best estimate"
+  products:
+    show:
+      price: "Price"
+      order: "Order"
