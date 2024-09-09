@@ -14,7 +14,10 @@ class ProductsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @properties = @product.properties.distinct
+    @product_properties = @product.product_property
+  end
 
   private
 

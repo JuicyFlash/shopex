@@ -32,10 +32,17 @@ RSpec.describe ProductsController, type: :controller do
   end
   describe 'GET #show' do
     let(:product) { create(:product) }
+    let(:product_properties) { create_list(:product_property, 3 , product: product) }
     before { get :show, params: { id: product.id } }
 
     it 'populates selected product' do
       expect(assigns(:product)).to eq(product)
+    end
+    it 'populates properties of selected product' do
+      expect(assigns(:properties)).to eq(product.properties.distinct)
+    end
+    it 'populates properties values of selected product' do
+      expect(assigns(:product_properties)).to eq(product.product_property)
     end
     it 'render show view' do
       expect(response).to render_template :show

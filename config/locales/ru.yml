@@ -166,3 +166,7 @@ ru:
       best_offer: "Лучшее предложение"
       top_sales: "Топ продаж"
       best_estimate: "Лучшие оценки"
+  products:
+    show:
+      price: "Цена"
+      order: "Купить"

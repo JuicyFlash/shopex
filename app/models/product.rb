@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :brand
   has_many :product_property, dependent: :destroy
-
+  has_many :properties, through: :product_property
   accepts_nested_attributes_for :product_property, reject_if: proc { |attributes|
                                                                       attributes['property_value_id'].blank? ||
                                                                       attributes['property_value_id'].to_i < 0
