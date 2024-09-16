@@ -1,8 +1,8 @@
-= form_with url: user_session_path, scope: :user, method: :post do |f|
+= form_with url: user_session_path, scope: :user, method: :post, data: { turbo: false } do |f|
   / = render "devise/shared/error_messages", resource: resource
   .field.modal-email
     = f.label t('user_sessions.email')
-    = f.email_field :email, class: "form-control form-control-sm", autofocus: true, autocomplete: "email"
+    = f.email_field :email, class: "form-control form-control-sm", autocomplete: "email"
   .field.modal-password.my-4
     = f.label t('user_sessions.password')
     = f.password_field :password, class: "form-control form-control-sm", autocomplete: "new-password"

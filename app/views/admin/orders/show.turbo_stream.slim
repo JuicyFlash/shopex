@@ -1,0 +1,2 @@
+= turbo_stream.remove("admin-order-#{ @order.id}-details")
+= turbo_stream.replace("admin-order-#{@order.id}", partial: 'admin/orders/order', locals: { order: @order, action: :show })

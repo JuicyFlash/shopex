@@ -37,6 +37,10 @@ en:
       admin_panel_title: "Admin panel"      
     top_header:
       modal_header: "Login"
+    search:
+      search: "Search"
+    logo:
+      catalog: "Catalog"
   carts:
     put_product:
       put_product_note: "Product successfully added to cart!"
@@ -88,6 +92,50 @@ en:
     shared:
       sidebar:
         products: "Products"
+        properties: "Properties"
+        users: "Users"
+        orders: "Orders"
+      search:
+        search: "Search"
+    orders:
+      admin_orders_page:
+        title: "Orders"
+        email: "User"
+        total: "Total"
+        author: "Buyer"
+        created: "Created at"
+        adress: "Adress"
+        phone: "Phone"
+      order_details:
+        product: "Product"
+        price: "Price"
+        quantity: "Quantity"
+        total_price: "Total price"
+      order:
+        details: "Details"
+        dismiss: "Close"
+        unknown_email: ""
+    properties:
+      create:
+        sucessful_created: "Property succesful created"
+      update:
+        sucessful_updated: "Property succesful updated"
+      destroy:
+        sucessful_deleted: "Property succesful deleted"
+      index:
+        title: "Properties"
+        name: "Property name"
+        unique: "Unique"
+        add_property: "Add property"
+      form:
+        name: "Name"
+        unique: "Unique"
+        update_property: "Update"
+        add_property: "Add"
+        add_value: "Add new value"
+        cancell: "Close"
+      property_value_fields:
+        value: "Value"
     products:
       create:
         sucessful_created: "Product succesful created"
@@ -110,7 +158,31 @@ en:
         images: "Files"
       index:
         title: "Products"
+        name: "Product"
         description: "Description"
         price: "Price"
         brand: "Brand"
         add_product: "Add product"
+    users:
+      index:
+        title: "Users"
+        email: "Email"
+        admin: "Admin"
+  orders_mailer:
+    subject: "New order was created"
+    new_order:
+      header: "New order was created"
+      name: "Product"
+      quantity: "Quantity"
+      price: "Total price"
+  orders_telegram_mailer:
+    subject: "New order was created"
+  main:
+    index:
+      best_offer: "Best offer"
+      top_sales: "Top sales"
+      best_estimate: "Best estimate"
+  products:
+    show:
+      price: "Price"
+      order: "Order"

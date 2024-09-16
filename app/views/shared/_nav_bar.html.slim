@@ -13,13 +13,15 @@
               - I18n.available_locales.each do |locale|
                 li
                   - unless I18n.locale == locale
-                    = link_to t(locale, scope: 'locales'), url_for(lang: locale), class: "dropdown-item"
+                    = link_to t(locale, scope: 'locales'), url_for(current_params.merge(lang: locale)) , class: "dropdown-item"
           - if current_user && current_user.admin?
             li.px-2
               = link_to t('.admin_panel_title'), admin_root_path, class: "nav-link"
+          li
+            = link_to "Каталог товаров", products_path, class: "nav-link"
       .d-flex
         - if user_signed_in?
-          = button_to t('user_sessions.logout'), destroy_user_session_path, class: "button btn btn-outline-light rounded-5 mx-3", method: :delete
+          = button_to t('user_sessions.logout'), destroy_user_session_path, class: "button btn btn-outline-light rounded-5 mx-3", method: :delete, data: { turbo: false }
           = link_to t('.orders'), orders_path, class: "button btn btn-sm btn-outline-light rounded-5 mx-3 my-1"            
         -else
           button.btn.btn-outline-light.rounded-5 data-bs-toggle="modal" data-bs-target="#signInModalForm"
