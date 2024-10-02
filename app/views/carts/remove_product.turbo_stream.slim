@@ -1,4 +1,6 @@
 = turbo_stream.update('nav-cart', partial: 'shared/nav_cart')
 = turbo_stream.remove("cart-product-#{@cart_product.id}")
+- @cart.cart_products.find_each do |cart_product|
+  = turbo_stream.replace("cart-product-#{cart_product.id}", partial: 'cart_products/cart_product', locals: { cart_product: cart_product })
 -unless @cart.cart_products.present?
   = turbo_stream.update('cart', partial: 'carts/cart')

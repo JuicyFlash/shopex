@@ -2,7 +2,19 @@
   input type="hidden"  name="product[product_id]" value="#{product.id}"
   .row.justify-content-end
     .p-2.bd-highlight.price
-      = format_price(product.price)
+      - discount = discount_catalog_for(product)
+      - product_price = discount[:discount_price]
+      - if product_price != product.price
+        .d-flex.flex-row
+          s
+            = format_price(product.price)
+          .discount-value.mx-2
+            = "-#{discount[:discount_value]}%"
+        div
+          = format_price(product_price)
+      - else
+        = format_price(product.price)
+
       .d-flex
         .p-2.bd-highlight
           = f.number_field :quantity, class: "form-control", value: 1, min: 1, id: "cart-product-#{product.id}-quantity"

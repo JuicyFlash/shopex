@@ -3,6 +3,7 @@
 class SearchController < ApplicationController
   before_action :find_cart, only: %i[products_show]
   before_action :current_params, only: %i[products_show]
+  before_action :load_discount_service, only: %i[products_show]
 
   def products_show
     @brands = Brand.all

@@ -3,8 +3,8 @@ require 'rails_helper'
 feature 'User can put out product from cart_products' do
   describe 'authenticated user' do
     given!(:user) { create(:user) }
-    given!(:cart) { create(:cart, user:) }
-    given!(:cart_product) { create(:cart_product, cart:) }
+    given!(:cart) { create(:cart, user: user) }
+    given!(:cart_product) { create(:cart_product, cart: cart) }
 
     background do
       sign_in(user)
@@ -36,7 +36,7 @@ feature 'User can put out product from cart_products' do
 
   describe 'unauthenticated user' do
     given!(:cart) { create(:cart, user: nil) }
-    given!(:cart_product) { create(:cart_product, cart:) }
+    given!(:cart_product) { create(:cart_product, cart: cart) }
     given!(:cart_service) { CartService.new({ cart_id: cart.id }, nil) }
 
     background do
