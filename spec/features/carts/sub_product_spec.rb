@@ -57,6 +57,7 @@ feature 'User can put out product from cart_products' do
         end
         click_on "sub-cart-product-#{cart_product.id}"
       end
+      cart_service.cart.reload
       within "#cart-product-#{cart_product.id}" do
         within '.quantity' do
           expect(page).to have_content cart_product.quantity - 1

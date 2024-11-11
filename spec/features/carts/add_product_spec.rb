@@ -56,7 +56,7 @@ feature 'User can add product in cart' do
         end
         click_link "add-cart-product-#{cart_product.id}"
       end
-      sleep 1.second
+      cart_service.cart.reload
       within "#cart-product-#{cart_product.id}" do
         within '.quantity' do
           expect(page).to have_content cart_product.quantity + 1
