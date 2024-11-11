@@ -1,0 +1,8 @@
+.col-md-6
+  = form.label "Условие"
+  = form.select :condition_type, condition_types, {}, { class: "form-select form-select-sm" }
+  = form.label :value, t('.value')
+  = render 'shared/record_message', record: condition, field: 'value'
+  = form.text_area :value, class: "form-control form-control-sm"
+  = link_to_remove_nested(form, link_classes: 'btn btn-outline-dark btn-sm')
+    i class="bi bi-x-lg"

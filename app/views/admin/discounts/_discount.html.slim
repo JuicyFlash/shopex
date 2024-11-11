@@ -1,0 +1,14 @@
+tr id="admin-discount-#{discount.id}"
+  td
+    = link_to edit_admin_discount_path(discount), class: "btn btn-outline-dark btn-sm", data: { turbo_stream: true }
+      i class="bi bi-pencil-square"
+  td
+    = discount.id
+  td
+    = discount.description
+  td
+    = "#{discount.value}%"
+  td
+    = discount.active
+  td
+    = discount.target

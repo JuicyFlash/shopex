@@ -21,7 +21,7 @@ RSpec.describe CartService do
     end
   end
 
-  describe 'unauthenticated user' do
+  describe 'authenticated user' do
     let!(:user) { create(:user) }
     let(:cart) { create(:cart, user: nil) }
 

@@ -79,6 +79,7 @@ ru:
         properties: "Свойства"
         users: "Пользователи"
         orders: "Заказы"
+        discounts: "Скидки"
       search:
         search: "Искать"
     orders:
@@ -99,6 +100,29 @@ ru:
         details: "Детали"
         dismiss: "Скрыть"
         unknown_email: ""
+    discounts:
+      create:
+        successful_created: "Скидка создана"
+        wrong_created: "Не удалось создать скидку"
+      update:
+        successful_updated: "Скидка изменена"
+        wrong_updated: "Не удалось изменить скидку"
+      admin_discounts_page:
+        title: "Скидки"
+        active: "Активная"
+        target: "Тип"
+        description: "Описание"
+        value: "Занчение"
+        add_discount: "Добавить скидку"
+      form:
+        value: "Значение"
+        description: "Описание"
+        active: "Активная"
+        target: "Тип"
+        add_discount: "Добавить"
+        update_discount: "Изменить"
+        cancel: "Отмена"
+        add_condition: "Добавить условие"
     properties:
       create:
         sucessful_created: "Свойство успешно создано"

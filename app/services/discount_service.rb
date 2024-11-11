@@ -1,6 +1,8 @@
 class DiscountService
-  Dir[File.dirname(__FILE__) + '/discount_conditions/*.rb'].each {|file| require file }
-  TARGETS = %w[catalog order personal].freeze
+  Dir[File.dirname(__FILE__) + '/discount_conditions/*.rb'].each { |file| require file }
+  TARGETS = { catalog: "Товар",
+              order: "Заказ",
+              personal: "Пользователь" }.freeze
   CONDITION_TYPES = { discount_personal: ConditionPersonal,
                       discount_by_product_brand: ConditionByProductBrand,
                       discount_by_product_id: ConditionByProductId,
@@ -24,15 +26,16 @@ class DiscountService
     discount_value = 0
     discount_personal = satisfies_discounts(product, 'personal', options).max { |a, b|  a.value <=> b.value }
     discount_catalog = satisfies_discounts(product, 'catalog', options).max { |a, b|  a.value <=> b.value }
-    discount_order = satisfies_discounts(product, 'order', options).max { |a, b|  a.value <=> b.value }if target == 'order'
+    discount_order = satisfies_discounts(product, 'order', options).max { |a, b|  a.value <=> b.value } if target == 'order'
 
     discount_value += discount_catalog.value unless discount_catalog.nil?
     discount_value += discount_personal.value unless discount_personal.nil?
     discount_value += discount_order.value unless discount_order.nil?
 
+    discount_value = 100 if discount_value > 100
+
     { discount_value: discount_value,
-      discount_price: product.price - (product.price / 100 * discount_value)
-    }
+      discount_price: product.price - (product.price / 100 * discount_value) }
   end
 
   def available_discounts

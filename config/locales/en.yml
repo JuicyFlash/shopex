@@ -95,6 +95,7 @@ en:
         properties: "Properties"
         users: "Users"
         orders: "Orders"
+        discounts: "Discounts"
       search:
         search: "Search"
     orders:
@@ -115,13 +116,36 @@ en:
         details: "Details"
         dismiss: "Close"
         unknown_email: ""
+    discounts:
+      create:
+        successful_created: "Discount successful created"
+        wrong_created: "Can`t create discount"
+      update:
+        successful_updated: "Discount successful updated"
+        wrong_updated: "Can`t update discount"
+      admin_discounts_page:
+        title: "Discounts"
+        active: "Active"
+        target: "Type"
+        description: "Description"
+        value: "Value"
+        add_discount: "New discount"
+      form:
+        value: "Value"
+        description: "Description"
+        active: "Active"
+        target: "Type"
+        add_discount: "Add"
+        update_discount: "Update"
+        cancel: "Cancel"
+        add_condition: "Add condition"
     properties:
       create:
-        sucessful_created: "Property succesful created"
+        sucessful_created: "Property successful created"
       update:
-        sucessful_updated: "Property succesful updated"
+        sucessful_updated: "Property successful updated"
       destroy:
-        sucessful_deleted: "Property succesful deleted"
+        sucessful_deleted: "Property successful deleted"
       index:
         title: "Properties"
         name: "Property name"
@@ -133,18 +157,18 @@ en:
         update_property: "Update"
         add_property: "Add"
         add_value: "Add new value"
-        cancell: "Close"
+        cancel: "Close"
       property_value_fields:
         value: "Value"
     products:
       create:
-        sucessful_created: "Product succesful created"
+        sucessful_created: "Product successful created"
         wrong_created: "Wrong create product"
       update:
-        sucessful_updated: "Product succesful updated"
+        sucessful_updated: "Product successful updated"
         wrong_updated: "Wrong update"
       purge_image:
-        sucessful_purged: "File sucessful purged"
+        sucessful_purged: "File successful purged"
         image_not_found: "File not found"
       form:
         title: "Title"
@@ -153,7 +177,7 @@ en:
         price: "Price"
         update_product: "Update"
         add_product: "Add"
-        cancell: "Close"
+        cancel: "Close"
         new_image: "New files"
         images: "Files"
       index:

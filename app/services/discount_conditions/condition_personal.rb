@@ -1,7 +1,7 @@
 class ConditionPersonal < AbstractCondition
 
   def self.description
-    "Скидка на указанный перечень id товаров"
+    "Если пользователь в указанном списке пользователей (id)"
   end
 
   def prepare(condition)

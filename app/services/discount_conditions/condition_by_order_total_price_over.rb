@@ -1,6 +1,6 @@
 class ConditionByOrderTotalPriceOver < AbstractCondition
   def self.description
-    "Скидка если сумма заказа больше указанной"
+    "Если сумма заказа больше указанной"
   end
 
   def prepare(condition)

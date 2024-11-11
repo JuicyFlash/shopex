@@ -36,7 +36,7 @@ feature 'User can add product in cart' do
 
   describe 'unauthenticated user' do
     given!(:cart) { create(:cart, user: nil) }
-    given!(:cart_product) { create(:cart_product, cart:) }
+    given!(:cart_product) { create(:cart_product, cart: cart) }
     given!(:cart_service) { CartService.new({ cart_id: cart.id }, nil) }
 
     background do
@@ -54,8 +54,9 @@ feature 'User can add product in cart' do
         within '.quantity' do
           expect(page).to have_content cart_product.quantity
         end
-        click_on "add-cart-product-#{cart_product.id}"
+        click_link "add-cart-product-#{cart_product.id}"
       end
+      sleep 1.second
       within "#cart-product-#{cart_product.id}" do
         within '.quantity' do
           expect(page).to have_content cart_product.quantity + 1

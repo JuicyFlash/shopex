@@ -11,7 +11,7 @@ div class="stimulus" data-controller="products"
           .col-3
             .field.product-brand
               = f.label t('.brand') 
-              = f.collection_select :brand_id, brands, :id, :title,{} ,{class: "form-select form-select-sm"} 
+              = f.collection_select :brand_id, brands, :id, :title, {}, {class: "form-select form-select-sm"}
               = render 'shared/record_message', record: product, field: 'brand_id'
           .col-3
             .field.product-price
@@ -24,20 +24,20 @@ div class="stimulus" data-controller="products"
           = render 'shared/record_message', record: product, field: 'description'
         .row.justify-content-around        
           - properties.all.each do |property|
-            .col-md-5.border-bottom.mx-1.my-1
+            .col-md-11.border-bottom.mx-1.my-1
               .property.my-1 = "#{property.name}"
               .d-flex.property-values
                 - if property.unique
                   = f.fields_for :product_property, product.product_property.new do |product_property|
-                    = product_property.hidden_field :property_id, value: property.id 
+                    = product_property.hidden_field :property_id, value: property.id
                     = product_property.collection_radio_buttons(:property_value_id, property.property_values, :id, :value) do |b|
                       = b.label(class: "mx-1") { b.radio_button(checked: action == :create ? false : product.property_value?(b.object)) + b.text}
                 - else
                   - property.property_values.each do |property_value|
-                    = f.fields_for :product_property, product.product_property.new do |product_property|                                       
-                      = product_property.hidden_field :property_id, value: property.id  
+                    = f.fields_for :product_property, product.product_property.new do |product_property|
+                      = product_property.hidden_field :property_id, value: property.id
                       = product_property.label :property_value_id, property_value.value, { class:"form-check-label" }
-                      = product_property.check_box :property_value_id, { class: "form-check mx-1", checked: action == :create ? false : product.property_value?(property_value) }, property_value.id , property_value.id*(-1)  
+                      = product_property.check_box :property_value_id, { class: "form-check mx-1", checked: action == :create ? false : product.property_value?(property_value) }, property_value.id , property_value.id*(-1)
       .col-6 
         .row
           = f.label t('.images')
@@ -46,6 +46,6 @@ div class="stimulus" data-controller="products"
     - if action == :create
       = f.submit t('.add_product'), class: "btn btn-dark my-3"
     - if action == :update
-       = f.submit t('.update_product'), class: "btn btn-dark my-3"
+      = f.submit t('.update_product'), class: "btn btn-dark my-3"
     button class="btn btn-dark btn-sm my-3 mx-2" data-action="click->products#dismissAddProductForm"
       =t('.cancell')

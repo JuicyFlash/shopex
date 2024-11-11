@@ -1,11 +1,11 @@
 class ConditionByProductBrand < AbstractCondition
 
   def self.description
-    "Скидка на указанный перечень id брэндов"
+    "Если брэнд товара входит в перечень брэндов (id)"
   end
 
   def prepare(condition)
-    condition.split(',').map{ |id| id.to_i }
+    condition.split(',').map{ |brand| Brand.find_by(title: brand) }.select { |brand| brand.id if !brand.nil? }.map{ |brand| brand.id.to_i }
   end
 
   def satisfies?(product, options = {})

@@ -1,7 +1,7 @@
 class ConditionByProductId < AbstractCondition
 
   def self.description
-    "Скидка на указанный перечень id товаров"
+    "Если товар входит в перечень товаров (id)"
   end
 
   def prepare(condition)
