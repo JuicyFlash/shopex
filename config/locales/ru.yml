@@ -20,6 +20,7 @@ ru:
   orders:
     create:
       create_note: "Заказ оформлен!"
+      wrong_create_note: "Не удалось создать заказ"
     order:      
       title: "Заказ от"
       product: "Товар"
@@ -27,6 +28,7 @@ ru:
       quantity: "Количество"
       cost: "Стоимость"
       total_cost: "Итого"
+      discount_value: "Скидка %"
     form:
       header: "Заказ"
       first_name: "Имя"
@@ -96,6 +98,8 @@ ru:
         price: "Цена"
         quantity: "Кол-во"
         total_price: "Стоимость"
+        discount_value: "Скидка %"
+        discount_price: "Цена со скидкой"
       order:
         details: "Детали"
         dismiss: "Скрыть"

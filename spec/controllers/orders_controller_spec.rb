@@ -58,6 +58,22 @@ RSpec.describe OrdersController, type: :controller do
                                                    } } }, format: :turbo_stream
         end.to change(Order, :count).by(0)
       end
+      it 'create order items with available discounts' do
+        first_discount = create(:discount, target: 'catalog', value: 5, active: true)
+        create(:discount_condition,
+               discount: first_discount,
+               condition_type: :discount_by_product_id,
+               value: cart_products[0].product_id)
+        second_discount = create(:discount, target: 'personal', value: 3, active: true)
+        create(:discount_condition,
+               discount: second_discount,
+               condition_type: :discount_by_product_id,
+               value: cart_products[0].product_id)
+
+        expect{ order_create }.to change(OrderProductDiscount, :count).by(2)
+        expect(OrderProduct.first.discount_value).to eq(first_discount.value + second_discount.value)
+        expect(OrderProduct.first.discount_price.to_f.round(2)).to eq((OrderProduct.first.price.to_f - ( OrderProduct.first.price.to_f / 100 * (first_discount.value + second_discount.value))).round(2))
+      end
     end
 
     describe 'unauthenticated user' do
@@ -99,6 +115,22 @@ RSpec.describe OrdersController, type: :controller do
                                                      house: order_detail.house_number
                                                    } } }, format: :turbo_stream
         end.to change(Order, :count).by(0)
+      end
+      it 'create order items with available discounts' do
+        first_discount = create(:discount, target: 'catalog', value: 5, active: true)
+        create(:discount_condition,
+               discount: first_discount,
+               condition_type: :discount_by_product_id,
+               value: cart_products[0].product_id)
+        second_discount = create(:discount, target: 'personal', value: 3, active: true)
+        create(:discount_condition,
+               discount: second_discount,
+               condition_type: :discount_by_product_id,
+               value: cart_products[0].product_id)
+
+        expect{ order_create }.to change(OrderProductDiscount, :count).by(2)
+        expect(OrderProduct.first.discount_value).to eq(first_discount.value + second_discount.value)
+        expect(OrderProduct.first.discount_price.to_f.round(2)).to eq((OrderProduct.first.price.to_f - ( OrderProduct.first.price.to_f / 100 * (first_discount.value + second_discount.value))).round(2))
       end
     end
   end

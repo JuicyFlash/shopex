@@ -9,6 +9,8 @@
           th scope="col"
             = t('.price')
           th scope="col"
+            = t('.discount_value')
+          th scope="col"
             = t('.quantity')
           th scope="col"
             = t('.cost')
@@ -19,6 +21,8 @@
               = order_product.product.title
             td
               = format_price(order_product.price)
+            td
+              =order_product.discount_value
             td
               = order_product.quantity
             td

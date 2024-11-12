@@ -34,7 +34,8 @@ class DiscountService
 
     discount_value = 100 if discount_value > 100
 
-    { discount_value: discount_value,
+    { discounts: [discount_personal, discount_catalog, discount_order].compact,
+      discount_value: discount_value,
       discount_price: product.price - (product.price / 100 * discount_value) }
   end
 

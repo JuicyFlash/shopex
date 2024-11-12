@@ -37,28 +37,26 @@ RSpec.describe DiscountService do
     discount }
   let!(:discount_service){ DiscountService.new }
 
-  it 'provide available discounts' do
+  before do
     discount_service.configure
+  end
+  it 'provide available discounts' do
     expect(discount_service.available_discounts[0][:discount_record]).to eq(discount_by_products)
     expect(discount_service.available_discounts[1][:discount_record]).to eq(discount_by_brand)
   end
   it 'provide conditions for discounts' do
-    discount_service.configure
     expect(discount_service.available_discounts[0][:discount_conditions][0]).to be_instance_of(ConditionByProductId)
     expect(discount_service.available_discounts[1][:discount_conditions][0]).to be_instance_of(ConditionByProductBrand)
   end
   it 'provide discount for product by discount_by_products' do
-    discount_service.configure
     discount_for_product = discount_service.discount_for(product_first, 'catalog')
     expect(discount_for_product[:discount_value]).to eq(discount_by_products.value)
   end
   it 'provide discount for product by discount_by_brand' do
-    discount_service.configure
     discount_for_product = discount_service.discount_for(product_second, 'catalog')
     expect(discount_for_product[:discount_value]).to eq(discount_by_brand.value)
   end
   it 'provide discount for product by discount_by_user' do
-    discount_service.configure
     discount_for_product = discount_service.discount_for(product_third, 'catalog', user: user )
     expect(discount_for_product[:discount_value]).to eq(discount_by_user.value)
   end
@@ -83,6 +81,7 @@ RSpec.describe DiscountService do
     expect(discount_for_product[:discount_value]).to eq(discount_by_brand.value)
   end
   it 'provide and summarize discounts with different targets' do
+    discount_service = DiscountService.new
     condition = discount_by_products.conditions.first
     condition.value = [product_first.id, product_second.id, product_third.id].join(',')
     condition.save

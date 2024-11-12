@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_22_115840) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_12_120641) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -96,6 +96,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_115840) do
     t.index ["order_id"], name: "index_order_details_on_order_id"
   end
 
+  create_table "order_product_discounts", force: :cascade do |t|
+    t.text "discount_description"
+    t.string "discount_target"
+    t.integer "discount_value"
+    t.integer "discount_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "order_product_id"
+    t.index ["order_product_id"], name: "index_order_product_discounts_on_order_product_id"
+  end
+
   create_table "order_products", force: :cascade do |t|
     t.integer "quantity", default: 1
     t.decimal "price", precision: 10, scale: 2, default: "0.0"
@@ -103,6 +114,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_115840) do
     t.datetime "updated_at", null: false
     t.bigint "order_id"
     t.bigint "product_id"
+    t.decimal "discount_price", precision: 10, scale: 2, default: "0.0"
+    t.integer "discount_value", default: 0
     t.index ["order_id"], name: "index_order_products_on_order_id"
     t.index ["product_id"], name: "index_order_products_on_product_id"
   end
@@ -170,6 +183,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_115840) do
   add_foreign_key "carts", "users"
   add_foreign_key "discount_conditions", "discounts"
   add_foreign_key "order_details", "orders"
+  add_foreign_key "order_product_discounts", "order_products"
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
   add_foreign_key "orders", "users"

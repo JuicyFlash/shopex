@@ -1,6 +1,6 @@
 module PriceHelper
   def format_price(price)
-    "#{price} ₽"
+    number_to_currency(price, :unit => "₽")
   end
 
   def discount_catalog_for(product)

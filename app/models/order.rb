@@ -13,7 +13,7 @@ class Order < ApplicationRecord
   def total
     res = 0
     order_products.find_each do |order_product|
-      res += order_product.price * order_product.quantity
+      res += [order_product.price, order_product.discount_price == 0 ? order_product.price : order_product.discount_price].min * order_product.quantity
     end
     res
   end

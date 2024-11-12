@@ -49,6 +49,7 @@ en:
   orders:
     create:
       create_note: "Order created! "
+      wrong_create_note: "Order does not create! "
     order:      
       title: "Order at"
       product: "Product"
@@ -56,6 +57,7 @@ en:
       quantity: "Quantity"
       cost: "Cost"
       total_cost: "Total"
+      discount_value: "Discount %"
     form:
       header: "Order"
       first_name: "Name"
@@ -112,6 +114,8 @@ en:
         price: "Price"
         quantity: "Quantity"
         total_price: "Total price"
+        discount_value: "Discount %"
+        discount_price: "Discount price"
       order:
         details: "Details"
         dismiss: "Close"
