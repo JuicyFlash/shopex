@@ -1,0 +1,31 @@
+div class="container-fluid"
+  div class="row"
+    = render 'admin/shared/sidebar'
+    main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"
+      div class="d-flex justify-content-left flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+        h1 class="disabled-link-decoration"
+          = link_to t('.title'), admin_discounts_path
+      = link_to t('.add_discount'), new_admin_discount_path, data: { turbo_stream: true }
+      div.my-3#new-discount-form
+        - if @discount
+          = render 'admin/discounts/form', discount: @discount, condition_types: @condition_types, action: :create
+      div class="table-responsive small"
+        table class="table table-hover table-sm"
+          thead
+            tr class="table-dark"
+              th
+              th scope="col"
+                = 'id'
+              th scope="col"
+                = t('.description')
+              th scope="col"
+                = t('.value')
+              th scope="col"
+                = t('.active')
+              th scope="col"
+                = t('.target')
+          tbody id="admin-discounts"
+            - @discounts.find_each do |discount|
+              = render 'admin/discounts/discount', discount: discount, action: :index
+      .row.justify-content-begin#bot-pagy
+        = render "shared/pagy_navigation", pagy: @pagy, nav_path_pagy: nav_path_pagy, query: query

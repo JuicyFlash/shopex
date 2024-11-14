@@ -23,4 +23,14 @@ class Cart < ApplicationRecord
     end
     res
   end
+
+  def total_with_discount(discount_service, options = {})
+    return total if discount_service.nil?
+
+    res = 0
+    cart_products.find_each do |cart_product|
+      res += discount_service.discount_for(cart_product.product, 'order', order: self, user: options[:user])[:discount_price] * cart_product.quantity
+    end
+    res
+  end
 end

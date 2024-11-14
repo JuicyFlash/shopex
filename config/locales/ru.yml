@@ -20,6 +20,7 @@ ru:
   orders:
     create:
       create_note: "Заказ оформлен!"
+      wrong_create_note: "Не удалось создать заказ"
     order:      
       title: "Заказ от"
       product: "Товар"
@@ -27,6 +28,7 @@ ru:
       quantity: "Количество"
       cost: "Стоимость"
       total_cost: "Итого"
+      discount_value: "Скидка %"
     form:
       header: "Заказ"
       first_name: "Имя"
@@ -79,6 +81,7 @@ ru:
         properties: "Свойства"
         users: "Пользователи"
         orders: "Заказы"
+        discounts: "Скидки"
       search:
         search: "Искать"
     orders:
@@ -95,10 +98,35 @@ ru:
         price: "Цена"
         quantity: "Кол-во"
         total_price: "Стоимость"
+        discount_value: "Скидка %"
+        discount_price: "Цена со скидкой"
       order:
         details: "Детали"
         dismiss: "Скрыть"
         unknown_email: ""
+    discounts:
+      create:
+        successful_created: "Скидка создана"
+        wrong_created: "Не удалось создать скидку"
+      update:
+        successful_updated: "Скидка изменена"
+        wrong_updated: "Не удалось изменить скидку"
+      admin_discounts_page:
+        title: "Скидки"
+        active: "Активная"
+        target: "Тип"
+        description: "Описание"
+        value: "Занчение"
+        add_discount: "Добавить скидку"
+      form:
+        value: "Значение"
+        description: "Описание"
+        active: "Активная"
+        target: "Тип"
+        add_discount: "Добавить"
+        update_discount: "Изменить"
+        cancel: "Отмена"
+        add_condition: "Добавить условие"
     properties:
       create:
         sucessful_created: "Свойство успешно создано"

@@ -8,11 +8,19 @@ class ApplicationController < ActionController::Base
     @cart_service ||= CartService.new(session, current_user)
   end
 
+  def discount_service
+    @discount_service ||= DiscountService.new
+  end
+
   def default_url_options
     I18n.default_locale == I18n.locale ? { lang: nil } : { lang: I18n.locale }
   end
 
   private
+
+  def load_discount_service
+    discount_service.configure
+  end
 
   def set_locale
     I18n.locale = I18n.locale_available?(params[:lang]) ? params[:lang] : I18n.default_locale

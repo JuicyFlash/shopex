@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_30_170236) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_12_120641) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,6 +65,24 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_30_170236) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
+  create_table "discount_conditions", force: :cascade do |t|
+    t.string "condition_type"
+    t.text "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "discount_id"
+    t.index ["discount_id"], name: "index_discount_conditions_on_discount_id"
+  end
+
+  create_table "discounts", force: :cascade do |t|
+    t.integer "value", default: 0
+    t.boolean "active", default: false
+    t.string "target"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "description"
+  end
+
   create_table "order_details", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -78,6 +96,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_30_170236) do
     t.index ["order_id"], name: "index_order_details_on_order_id"
   end
 
+  create_table "order_product_discounts", force: :cascade do |t|
+    t.text "discount_description"
+    t.string "discount_target"
+    t.integer "discount_value"
+    t.integer "discount_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "order_product_id"
+    t.index ["order_product_id"], name: "index_order_product_discounts_on_order_product_id"
+  end
+
   create_table "order_products", force: :cascade do |t|
     t.integer "quantity", default: 1
     t.decimal "price", precision: 10, scale: 2, default: "0.0"
@@ -85,6 +114,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_30_170236) do
     t.datetime "updated_at", null: false
     t.bigint "order_id"
     t.bigint "product_id"
+    t.decimal "discount_price", precision: 10, scale: 2, default: "0.0"
+    t.integer "discount_value", default: 0
     t.index ["order_id"], name: "index_order_products_on_order_id"
     t.index ["product_id"], name: "index_order_products_on_product_id"
   end
@@ -150,7 +181,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_30_170236) do
   add_foreign_key "cart_products", "carts"
   add_foreign_key "cart_products", "products"
   add_foreign_key "carts", "users"
+  add_foreign_key "discount_conditions", "discounts"
   add_foreign_key "order_details", "orders"
+  add_foreign_key "order_product_discounts", "order_products"
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
   add_foreign_key "orders", "users"

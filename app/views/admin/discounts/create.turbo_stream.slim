@@ -1,0 +1,17 @@
+- if @discount_saved
+  = turbo_stream.prepend('admin-discounts', partial: 'discount', locals: { discount: @discount })
+  = turbo_stream.append('flash-messages', partial: 'shared/flash')
+  = turbo_stream.update('new-discount-form', partial: 'form',
+          locals: { discount: @discount,
+                    discount_targets: @discount_targets,
+                    condition_types: @condition_types,
+                    condition: @condition,
+                    action: :update })
+- else
+  = turbo_stream.update('new-discount-form', partial: 'form',
+          locals: { discount: @discount,
+                    discount_targets: @discount_targets,
+                    condition_types: @condition_types,
+                    condition: @condition,
+                    action: :create })
+  = turbo_stream.append('flash-messages', partial: 'shared/flash')

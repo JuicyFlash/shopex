@@ -43,5 +43,7 @@ Rails.application.routes.draw do
     end
 
     resources :properties
+
+    resources :discounts
   end
 end
