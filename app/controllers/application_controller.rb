@@ -25,4 +25,10 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = I18n.locale_available?(params[:lang]) ? params[:lang] : I18n.default_locale
   end
+
+
+  def find_cart
+    @cart = cart_service.cart
+    @compare_cart = cart_service.compare_cart
+  end
 end

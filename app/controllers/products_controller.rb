@@ -34,8 +34,4 @@ class ProductsController < ApplicationController
   def find_product
     @product = Product.with_attached_images.find_by(id: params[:id])
   end
-
-  def find_cart
-    @cart = cart_service.cart
-  end
 end

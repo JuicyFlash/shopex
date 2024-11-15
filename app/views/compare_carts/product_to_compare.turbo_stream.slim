@@ -1,0 +1,12 @@
+= turbo_stream.append('flash-messages', partial: 'shared/flash')
+= turbo_stream.update('nav-compare-cart', partial: 'shared/nav_compare_cart')
+= turbo_stream.replace("product-#{@product.id}-to-compare", partial: 'compare_carts/product_to_compare', locals: { product: @product })
+
+- unless @compare_cart.cart_products.present?
+  = turbo_stream.replace('compare-cart', partial: 'compare_carts/compare_cart')
+- else
+  = turbo_stream.remove("comparable-product-#{@product.id}")
+  = turbo_stream.remove("comparable-product-#{@product.id}-brand")
+  = turbo_stream.remove("comparable-product-#{@product.id}-price")
+  - Property.with_values.find_each do |property|
+    = turbo_stream.remove("comparable-product-#{@product.id}-property-#{property.id}")

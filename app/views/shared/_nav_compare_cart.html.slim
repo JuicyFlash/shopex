@@ -1,0 +1,8 @@
+- unless @compare_cart.nil?
+  - if @compare_cart.cart_products.count > 0
+    = link_to compare_show_path
+      .div.d-flex.mx-2
+        = image_tag('compare_cart.png', width: 25, height: 20, class: "cart-image")
+        .flex-column.nav-cart-info
+          .div = "товаров: #{@compare_cart.cart_products.count}"
+          .div = "сравнить"

@@ -27,8 +27,4 @@ class SearchController < ApplicationController
   def search_params
     params.permit(:query, :page, brands: [], properties: {})
   end
-
-  def find_cart
-    @cart = cart_service.cart
-  end
 end

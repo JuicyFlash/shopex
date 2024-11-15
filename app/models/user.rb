@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_one :cart, dependent: :destroy
+  has_one :compare_cart, dependent: :destroy
   has_many :orders
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable , :validatable, :recoverable
