@@ -64,7 +64,4 @@ class CartsController < ApplicationController
     params.require(:product).permit(:product_id, :quantity)
   end
 
-  def find_cart
-    @cart = cart_service.cart
-  end
 end

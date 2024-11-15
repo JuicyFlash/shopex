@@ -17,6 +17,11 @@ ru:
       put_product_note: "Товар добавлен в корзину!"
     put_product_form:
       put: "Купить"
+  compare_carts:
+    product_to_compare:
+      product_to_compare_note: "Товар добавлен к сравнению"
+      wrong_product_to_compare_note: "Не удалось добавить товар к сравнению"
+      product_to_compare_remove_note: "Товар удалён из сравнения"
   orders:
     create:
       create_note: "Заказ оформлен!"

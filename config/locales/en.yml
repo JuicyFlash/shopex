@@ -46,6 +46,11 @@ en:
       put_product_note: "Product successfully added to cart!"
     put_product_form:
       put: "Order"
+  compare_carts:
+    product_to_compare:
+      product_to_compare_note: "Product added to compare"
+      wrong_product_to_compare_note: "Product wrong added to compare"
+      product_to_compare_remove_note: "Product remove from compare"
   orders:
     create:
       create_note: "Order created! "

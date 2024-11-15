@@ -47,8 +47,4 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(detail_attributes: %i[first_name last_name city phone_number street house_number])
   end
-
-  def find_cart
-    @cart = cart_service.cart
-  end
 end
