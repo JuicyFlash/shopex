@@ -8,6 +8,10 @@ tr id="admin-order-#{order.id}-details"
           th scope="col"
             = t('.price')
           th scope="col"
+            = t('.discount_price')
+          th scope="col"
+            = t('.discount_value')
+          th scope="col"
             = t('.quantity')
           th scope="col"
             = t('.total_price')
@@ -17,6 +21,10 @@ tr id="admin-order-#{order.id}-details"
               = order_product.product.title
             td
               = format_price(order_product.price)
+            td
+              = format_price([order_product.price, order_product.discount_price == 0 ? order_product.price : order_product.discount_price].min)
+            td
+              = order_product.discount_value
             td
               = order_product.quantity
             td

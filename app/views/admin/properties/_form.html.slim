@@ -24,6 +24,6 @@ div class="stimulus" data-controller="properties"
     - if action == :create
       = f.submit t('.add_property'), class: "btn btn-dark my-3"
     - if action == :update
-       = f.submit t('.update_property'), class: "btn btn-dark my-3"
+      = f.submit t('.update_property'), class: "btn btn-dark my-3"
     button class="btn btn-dark btn-sm my-3 mx-2" data-action="click->properties#dismissAddPropertyForm"
       =t('.cancell')

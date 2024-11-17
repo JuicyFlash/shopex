@@ -2,6 +2,7 @@
 
 class CartsController < ApplicationController
   before_action :find_cart, only: %i[put_product add_product sub_product remove_product show]
+  before_action :load_discount_service, only: %i[show put_product add_product sub_product remove_product]
 
   def show
     @order = Order.new
@@ -63,7 +64,4 @@ class CartsController < ApplicationController
     params.require(:product).permit(:product_id, :quantity)
   end
 
-  def find_cart
-    @cart = cart_service.cart
-  end
 end

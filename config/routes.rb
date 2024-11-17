@@ -25,6 +25,10 @@ Rails.application.routes.draw do
 
   get 'cart/show' => 'carts#show'
 
+  patch 'compare/product' => 'compare_carts#product_to_compare'
+
+  get 'compare/show' => 'compare_carts#show'
+
   namespace :admin do
     root 'products#index'
 
@@ -43,5 +47,7 @@ Rails.application.routes.draw do
     end
 
     resources :properties
+
+    resources :discounts
   end
 end

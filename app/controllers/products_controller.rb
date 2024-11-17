@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :find_product, only: %i[show]
   before_action :find_cart, only: %i[index show]
   before_action :current_params, only: %i[index]
+  before_action :load_discount_service, only: %i[index show]
 
   def index
     @brands = Brand.all
@@ -32,9 +33,5 @@ class ProductsController < ApplicationController
 
   def find_product
     @product = Product.with_attached_images.find_by(id: params[:id])
-  end
-
-  def find_cart
-    @cart = cart_service.cart
   end
 end

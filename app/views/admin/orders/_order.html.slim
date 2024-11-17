@@ -25,7 +25,7 @@ tr id="admin-order-#{order.id}" class="#{action == :show ? 'table-primary' : ''}
     - else
       = order.user.email
   td
-    = order.total
+    = format_price(order.total)
   td
      = order.delivery_adress
   td

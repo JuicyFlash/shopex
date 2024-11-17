@@ -7,7 +7,7 @@
             .carousel-inner
               - @product.images.find_each.with_index do |image, index|
                 div class="carousel-item #{index == 0 ?  'active' : ''}"
-                  = image_tag(image.variant(resize_to_limit: [400, 400]), class: "d-block product-picture")
+                  = image_tag(image.variant(resize_to_limit: [400, 400]), class: "compare-picture")
             - if @product.images.length > 1
               button class="carousel-control-prev" type="button" data-bs-target="#carouselProduct" data-bs-slide="prev"
                 span class="carousel-control-prev-icon" aria-hidden="true"

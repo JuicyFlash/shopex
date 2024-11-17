@@ -1,10 +1,11 @@
-/ .product
-/   = product.title
-/   = render 'carts/put_product_form', product: product
-
 .product-card.col-md-3.overflow-visible.flex-col
-  .brand.my-4.mx-2
-    = product.brand.title.capitalize
+  .row.justify-content-between.my-2
+    .col-md-9
+      .brand
+        = product.brand.title.capitalize
+    .col-md-3
+      .compare
+        = render 'compare_carts/product_to_compare', product: product
   .title.my-4
     h5
       = link_to product.title.capitalize, product_path(product)      

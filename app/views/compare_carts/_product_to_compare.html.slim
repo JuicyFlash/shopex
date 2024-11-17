@@ -1,0 +1,5 @@
+= link_to compare_product_path(product: { product_id: product.id } ), id: "product-#{product.id}-to-compare", data: { turbo_method: :patch }, class: "btn btn-outline-dark btn-sm compare-button"
+  - if @compare_cart.product_exist_in_cart?(product.id)
+    = bi_icon('bar-chart-fill')
+  - else
+    = bi_icon('bar-chart')
