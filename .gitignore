@@ -41,3 +41,6 @@
 
 config/*.sphinx.conf
 db/sphinx
+/config/shop-ex.online.csr
+/config/ssl/shop-ex.online.key
+/config/ssl/
