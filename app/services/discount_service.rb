@@ -3,11 +3,11 @@ class DiscountService
   TARGETS = { catalog: "Товар",
               order: "Заказ",
               personal: "Пользователь" }.freeze
-  CONDITION_TYPES = { discount_personal: ConditionPersonal,
-                      discount_by_product_brand: ConditionByProductBrand,
-                      discount_by_product_id: ConditionByProductId,
+  CONDITION_TYPES = { discount_personal: DiscountConditions::ConditionPersonal,
+                      discount_by_product_brand: DiscountConditions::ConditionByProductBrand,
+                      discount_by_product_id: DiscountConditions::ConditionByProductId,
                       # discount_by_product_property: DiscountByProductProperty,
-                      discount_by_order_total_price_over: ConditionByOrderTotalPriceOver
+                      discount_by_order_total_price_over: DiscountConditions::ConditionByOrderTotalPriceOver
   }.freeze
   def initialize
     @discounts = []
